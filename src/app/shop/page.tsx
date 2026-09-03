@@ -35,7 +35,7 @@ export default async function ShopPage({
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <CollectionHeader
         eyebrow="The Collection"
-        title="Every piece we make."
+        title="Every piece, hand-selected."
         description="Lace front wigs finished by hand, raw and virgin hair bundles, and HD lace frontals and closures. Filter by texture, length, density and colour to find your match."
         count={products.length}
         crumbs={crumbs}

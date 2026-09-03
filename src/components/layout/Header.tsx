@@ -158,13 +158,14 @@ export function Header() {
               ) : null}
             </button>
 
-            <ButtonLink
-              href="/book"
-              size="sm"
-              className="ml-3 hidden h-10 px-5 text-[10px] xl:inline-flex"
-            >
-              Book Appointment
-            </ButtonLink>
+            {/* Wrapped rather than given `hidden` directly: ButtonLink's own
+                `inline-flex` is emitted after `hidden` in the stylesheet and
+                would win, leaving the CTA overlapping the mobile logo. */}
+            <div className="ml-3 hidden xl:block">
+              <ButtonLink href="/book" size="sm" className="h-10 px-5 text-[10px]">
+                Book Appointment
+              </ButtonLink>
+            </div>
           </div>
         </div>
 

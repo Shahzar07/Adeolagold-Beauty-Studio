@@ -57,7 +57,7 @@ export default function ServicesPage() {
           <ImageFrame ratio="16/9" className="mb-16">
             <EditorialImage
               seed="services-hero"
-              alt="The Adeolagold studio during an appointment"
+              alt="Editorial portrait of a client wearing a long braided style"
               tone="studio"
               sizes="100vw"
               priority

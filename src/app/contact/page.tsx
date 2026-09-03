@@ -51,7 +51,7 @@ export default function ContactPage() {
             <ImageFrame ratio="4/5">
               <EditorialImage
                 seed="contact-studio"
-                alt="The entrance to Adeolagold Beauty Studio"
+                alt="Close-up beauty portrait with a finished makeup look"
                 tone="studio"
                 sizes="(min-width: 1024px) 32vw, 92vw"
               />

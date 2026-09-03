@@ -13,7 +13,7 @@ export function AboutPreview() {
               <ImageFrame ratio="4/5" className="w-[82%]">
                 <EditorialImage
                   seed="about-founder"
-                  alt="Adeola, founder of Adeolagold Beauty Studio, in the studio"
+                  alt="Editorial portrait of a client after a studio appointment"
                   tone="portrait"
                   sizes="(min-width: 1024px) 40vw, 76vw"
                 />
@@ -22,7 +22,7 @@ export function AboutPreview() {
                 <ImageFrame ratio="1/1">
                   <EditorialImage
                     seed="about-detail"
-                    alt="Hands finishing a hairline in the studio"
+                    alt="Close-up of a finished braided style"
                     tone="detail"
                     sizes="(min-width: 1024px) 22vw, 42vw"
                   />

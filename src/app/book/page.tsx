@@ -56,7 +56,7 @@ export default async function BookPage({
               <ImageFrame ratio="4/5">
                 <EditorialImage
                   seed="booking-studio"
-                  alt="The Adeolagold studio, set up for an appointment"
+                  alt="Editorial beauty portrait of a client"
                   tone="studio"
                   sizes="(min-width: 1024px) 26vw, 92vw"
                 />

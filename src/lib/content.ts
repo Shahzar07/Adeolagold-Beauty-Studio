@@ -135,14 +135,14 @@ export const categoryTiles: CategoryTile[] = [
 ];
 
 export const instagramPosts = [
-  { seed: "ig-01", alt: "Client wearing a body wave install, studio portrait", caption: "Body wave, 22 inches" },
-  { seed: "ig-02", alt: "Close-up of a melted HD lace hairline", caption: "The hairline is the whole job" },
-  { seed: "ig-03", alt: "Knotless braids photographed from behind", caption: "Knotless, no tension" },
-  { seed: "ig-04", alt: "Champagne blonde wig on a studio block", caption: "Three sessions to get here" },
-  { seed: "ig-05", alt: "Macro texture study of raw body wave hair", caption: "Raw body wave, cuticle intact" },
-  { seed: "ig-06", alt: "Studio interior with wigs on display shelves", caption: "The studio, Tuesday morning" },
-  { seed: "ig-07", alt: "Bone straight bob styled on a client", caption: "Blunt bob, checked dry" },
-  { seed: "ig-08", alt: "Client laughing after a sew-in appointment", caption: "This is the bit we do it for" },
+  { seed: "ig-01", alt: "Client having a long install blow-dried in the studio", caption: "Body wave, 22 inches" },
+  { seed: "ig-02", alt: "Sleek ponytail in profile, hairline laid flat", caption: "The hairline is the whole job" },
+  { seed: "ig-03", alt: "Boho braids being fitted, photographed from behind", caption: "Knotless, no tension" },
+  { seed: "ig-04", alt: "Client in a long straight install against a gold backdrop", caption: "Three sessions to get here" },
+  { seed: "ig-05", alt: "Close-up of a finished set of braids", caption: "Raw body wave, cuticle intact" },
+  { seed: "ig-06", alt: "Wigs and bundles on display in the studio", caption: "The studio, Tuesday morning" },
+  { seed: "ig-07", alt: "A blunt bob checked dry after cutting", caption: "Blunt bob, checked dry" },
+  { seed: "ig-08", alt: "Client smiling after a braiding appointment", caption: "This is the bit we do it for" },
 ];
 
 export interface FaqGroup {

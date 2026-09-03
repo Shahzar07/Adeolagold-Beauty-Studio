@@ -49,34 +49,50 @@ Breakpoints are overridden to match the brief: `xs` 480 · `sm` 640 · `md` 768 
 
 ---
 
-## Imagery — important
+## Imagery
 
-The site ships with a **generative editorial imagery system** rather than stock photography.
-`src/components/media/EditorialImage.tsx` paints a deterministic, brand-toned composition for
-each image slot (seeded per `seed` string, so it is stable across server and client renders).
+Every image slot on the site is addressed by a `seed` string and resolved through
+`src/lib/images.ts`, which maps that seed to a file in `/public/images`.
+`EditorialImage` renders an optimised `next/image` for any seed the registry knows,
+and falls back to deterministic generative artwork for any seed it does not — so a
+slot with no photograph still renders in the right tone rather than breaking the
+layout.
 
-It is painted entirely with CSS gradients plus a small inline SVG for the strand curves —
-no `url(#…)` references — so the same seed can appear many times on a page (thumbnail rail,
-mobile carousel, main view) without SVG id collisions.
+```
+seed ──► src/lib/images.ts ──► /public/images/<seed>.jpg ──► next/image
+   └──► (no entry) ──────────► generative artwork, brand palette
+```
 
-Six tones tune the palette, strand density, key light and vignette:
-`portrait` · `campaign` · `studio` · `product` · `texture` · `detail`.
+The 74 photographs currently in the registry are from
+[Pexels](https://www.pexels.com) under the [Pexels licence](https://www.pexels.com/license/)
+(free for commercial use, no attribution required). Every source is recorded in
+`public/images/CREDITS.md` so any image can be traced, re-downloaded at full
+resolution, or replaced.
 
-### Swapping in real photography
+Each file is pre-cropped to the aspect its slot renders at (4:5 for products and
+portraits, 3:4 for the category tiles, 1:1 for the Instagram grid and journal
+cards, 16:9 for full-bleed bands) with a vertical bias that keeps heads in frame.
 
-Every image slot already accepts a real file. Two ways:
+### Replacing an image
 
-1. **Per product** — add `src` to the image entry in `src/lib/catalog.ts`:
-   ```ts
-   img("body-wave-front", "Body wave closure wig, front view", "product")
-   // becomes
-   { seed: "body-wave-front", alt: "…", tone: "product", src: "/images/body-wave-front.jpg" }
-   ```
-2. **Anywhere else** — pass `src` to `<EditorialImage src="/images/hero.jpg" … />`.
+Drop the new file in `/public/images` and point the seed at it:
 
-When `src` is present the component renders an optimised `next/image` with `fill` and the
-`sizes` already declared at each call site. Drop files into `/public/images/`. For a remote
-CDN (Shopify Files, Cloudinary), add the host to `images.remotePatterns` in `next.config.ts`.
+```ts
+// src/lib/images.ts
+"lace-30-front": "/images/lace-30-front.jpg",
+```
+
+Nothing else changes — the shop, PDP gallery, collections, mega menus, journal and
+Instagram grid all read the same registry. To use a remote CDN (Shopify Files,
+Cloudinary) instead, put the URL in the registry and add the host to
+`images.remotePatterns` in `next.config.ts`.
+
+### A note on what the photographs claim
+
+These are stock models, not the studio's clients, founder or premises. Alt text and
+captions are written so nothing asserts otherwise — no image is labelled as the
+founder or as the studio's own room. Keep that constraint when swapping images in,
+until the studio's own photography replaces them.
 
 ---
 
@@ -198,26 +214,29 @@ Two consequences worth knowing before editing:
 
 **Done and verified:** `build`, `lint` and `typecheck` all pass. Every route was swept with
 Playwright at 1440 / 768 / 375 — 19 pages × 3 breakpoints, all HTTP 200, no console errors,
-no horizontal overflow. Interaction states captured and checked: mobile menu (closed and with
-a nav group expanded), search drawer with results, cart drawer, filter drawer, toast, both
-mega menus, and all five booking steps.
+no horizontal overflow, and no overlapping controls in the header. Interaction states
+captured and checked: mobile menu (closed and with a nav group expanded), search drawer with
+results, cart drawer, filter drawer, toast, both mega menus, and all five booking steps.
+All 74 photographs were reviewed individually after cropping.
 
 **Remaining:**
 
-1. **Real photography** — swap the generative art per the imagery section above. External
-   stock CDNs are blocked from this environment, so every slot still renders seeded
-   generative artwork; each already accepts a real `src` and switches to `next/image`.
+1. **Swap in the studio's own photography.** The site is fully dressed with
+   licensed stock (see the imagery section); replacing a shot is one registry
+   entry. This is the highest-value remaining change — a wig studio sells on its
+   own work.
 2. **Wire the integration points** in the table above — each is a single commented
    `setTimeout`.
 3. **Lighthouse run** against a deployed build.
-4. **Confirm the commercial details the studio has not published anywhere**, all of which are
-   currently this build's assumptions rather than facts:
-   - free UK delivery over £150 (`FREE_SHIPPING_THRESHOLD` in `src/lib/format.ts`, and the
-     announcement bar), next-day at £8.95, and the international shipping copy in
-     `src/lib/content.ts`;
+4. **Confirm the commercial details the studio has not published anywhere**, all of
+   which are currently this build's assumptions rather than facts:
+   - free UK delivery over £150 (`FREE_SHIPPING_THRESHOLD` in `src/lib/format.ts`,
+     and the announcement bar), next-day at £8.95, and the international shipping
+     copy in `src/lib/content.ts`;
    - the 14-day returns window and the 48-hour cancellation terms in `helpPages`;
-   - variant uplifts for length, density and colour in `src/lib/catalog.ts` — base prices are
-     the studio's real listings, the per-option deltas are not.
-5. **Expand the catalogue** if the studio stocks more than the seven listings it publishes
-   online. Adding an entry to `products` in `src/lib/catalog.ts` is all that is needed; the
-   shop, collections, filters, search, sitemap and JSON-LD all derive from it.
+   - variant uplifts for length, density and colour in `src/lib/catalog.ts` — base
+     prices are the studio's real listings, the per-option deltas are not.
+5. **Expand the catalogue** if the studio stocks more than the seven listings it
+   publishes online. Adding an entry to `products` in `src/lib/catalog.ts` is all
+   that is needed; the shop, collections, filters, search, sitemap and JSON-LD all
+   derive from it.

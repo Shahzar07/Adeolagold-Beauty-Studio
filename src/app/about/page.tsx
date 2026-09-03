@@ -78,7 +78,7 @@ export default function AboutPage() {
         <div className="grain relative h-[46svh] min-h-[320px] overflow-hidden bg-surface lg:h-[64svh]">
           <EditorialImage
             seed="about-studio-wide"
-            alt="Inside the Adeolagold Beauty Studio"
+            alt="A client photographed with a full-length install"
             tone="studio"
             sizes="100vw"
             priority
@@ -122,7 +122,7 @@ export default function AboutPage() {
                   seen, heard and cared for.”
                 </p>
                 <footer className="mt-4 text-[11px] uppercase tracking-[0.16em] text-muted">
-                  Adeola — Founder
+                  Adeolagold Beauty Studio
                 </footer>
               </blockquote>
             </Reveal>
@@ -131,14 +131,14 @@ export default function AboutPage() {
       </section>
 
       {/* Founder portrait pair */}
-      <section className="section-sm" aria-label="The founder">
+      <section className="section-sm" aria-label="In the studio">
         <div className="container-page">
           <div className="grid gap-6 md:grid-cols-12">
             <Reveal className="md:col-span-7">
               <ImageFrame ratio="4/5">
                 <EditorialImage
                   seed="about-founder-portrait"
-                  alt="Adeola, founder of Adeolagold Beauty Studio"
+                  alt="Editorial portrait of a client wearing a braided style"
                   tone="portrait"
                   sizes="(min-width: 768px) 56vw, 100vw"
                 />
@@ -148,14 +148,14 @@ export default function AboutPage() {
               <ImageFrame ratio="1/1">
                 <EditorialImage
                   seed="about-hands"
-                  alt="Hands ventilating a hairline in the workshop"
+                  alt="Close-up of hands working through hair"
                   tone="detail"
                   sizes="(min-width: 768px) 30vw, 100vw"
                 />
               </ImageFrame>
               <p className="text-[13.5px] leading-relaxed text-muted">
-                Every unit that leaves the workshop has been through Adeola&rsquo;s hands at least
-                twice — once at the cap, once at the cut.
+                Every unit is checked by hand before it leaves the studio — once at the cap,
+                once at the cut.
               </p>
             </Reveal>
           </div>

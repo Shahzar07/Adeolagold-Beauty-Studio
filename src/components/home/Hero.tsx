@@ -78,7 +78,7 @@ export function Hero() {
             <div className="grain absolute inset-0">
               <EditorialImage
                 seed="hero-campaign-primary"
-                alt="Close-up editorial portrait of a client wearing a hand-finished Adeolagold wig"
+                alt="Editorial beauty portrait of a client photographed in the studio"
                 tone="portrait"
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 priority

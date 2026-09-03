@@ -25,7 +25,7 @@ export function ServicesPreview() {
             <ImageFrame ratio="4/5">
               <EditorialImage
                 seed="services-studio"
-                alt="The Adeolagold studio prepared for a client appointment"
+                alt="Styling tools laid out for an appointment"
                 tone="studio"
                 sizes="(min-width: 1024px) 32vw, 92vw"
               />

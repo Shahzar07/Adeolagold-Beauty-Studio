@@ -9,7 +9,7 @@ export function CampaignBanner() {
         <div className="grain absolute inset-0">
           <EditorialImage
             seed="campaign-signature"
-            alt="Client photographed in the studio after a full installation"
+            alt="Editorial beauty portrait photographed under studio light"
             tone="campaign"
             sizes="100vw"
           />
