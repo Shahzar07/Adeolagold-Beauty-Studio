@@ -37,7 +37,7 @@ export default function ContactPage() {
           <Reveal delay={100} className="lg:col-span-5 lg:col-start-8">
             <p className="body-lg max-w-lg">
               Questions about a unit, an order or an appointment — or you want something sourced
-              that is not on the site. We answer everything within one working day.
+              that is not on the site. We answer everything within 24 hours.
             </p>
           </Reveal>
         </header>
@@ -61,12 +61,15 @@ export default function ContactPage() {
               <div>
                 <p className="eyebrow mb-3">The studio</p>
                 <address className="not-italic text-[14px] leading-relaxed text-ink-soft">
-                  {design.brand.address.street}
-                  <br />
-                  {design.brand.address.locality}
-                  <br />
-                  {design.brand.address.postalCode}
+                  {design.brand.location.displayLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </address>
+                <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                  {design.brand.location.note}
+                </p>
               </div>
 
               <div>
@@ -79,7 +82,7 @@ export default function ContactPage() {
                   </li>
                   <li>
                     <a
-                      href={`tel:${design.brand.phone.replace(/\s/g, "")}`}
+                      href={`tel:${design.brand.phoneE164}`}
                       className="link-underline"
                     >
                       {design.brand.phone}
@@ -105,16 +108,20 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-3">
                 <ButtonLink
-                  href={`https://wa.me/${design.brand.phone.replace(/[^0-9]/g, "")}`}
+                  href={`https://wa.me/${design.brand.phoneE164.replace(/[^0-9]/g, "")}`}
                   variant="secondary"
                   fullWidth
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp the studio
                 </ButtonLink>
-                <ButtonLink href={design.brand.instagramUrl} variant="ghost" fullWidth>
+                <ButtonLink
+                  href={design.brand.social.instagram.url}
+                  variant="ghost"
+                  fullWidth
+                >
                   <InstagramIcon className="h-4 w-4" />
-                  {design.brand.instagram}
+                  {design.brand.social.instagram.handle}
                 </ButtonLink>
                 <ButtonLink href="/book" fullWidth>
                   <PinIcon className="h-4 w-4" />

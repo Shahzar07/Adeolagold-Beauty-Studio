@@ -3,7 +3,7 @@ import { searchProducts } from "@/lib/catalog";
 import { services } from "@/lib/services";
 import { journalPosts } from "@/lib/journal";
 import { pageMeta } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
+import { formatServicePrice } from "@/lib/format";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductGrid } from "@/components/commerce/ProductGrid";
 import { ButtonLink } from "@/components/ui/Button";
@@ -112,7 +112,7 @@ export default async function SearchPage({
                         </p>
                       </div>
                       <span className="shrink-0 text-[13px] tabular-nums text-ink">
-                        From {formatPrice(service.fromPrice)}
+                        {formatServicePrice(service.fromPrice)}
                       </span>
                     </Link>
                   </li>

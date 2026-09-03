@@ -9,7 +9,7 @@ import type { FilterState } from "@/components/commerce/FilterDrawer";
 export const metadata = pageMeta({
   title: "Shop All Hair",
   description:
-    "Shop the full Adeolagold collection — luxury wigs, single-donor human hair bundles, HD closures and frontals, and studio-formulated hair care.",
+    "Shop the full Adeolagold collection — luxury lace front wigs, raw and virgin human hair bundles, and HD lace frontals and closures. UK-wide delivery.",
   path: "/shop",
 });
 
@@ -36,7 +36,7 @@ export default async function ShopPage({
       <CollectionHeader
         eyebrow="The Collection"
         title="Every piece we make."
-        description="Wigs finished by hand, single-donor bundles, and the aftercare we use in the studio. Filter by texture, length, density and colour to find your match."
+        description="Lace front wigs finished by hand, raw and virgin hair bundles, and HD lace frontals and closures. Filter by texture, length, density and colour to find your match."
         count={products.length}
         crumbs={crumbs}
       />

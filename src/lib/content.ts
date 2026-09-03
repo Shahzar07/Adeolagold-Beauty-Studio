@@ -1,35 +1,54 @@
 import type { Testimonial } from "./types";
 
+/** The studio's own published client reviews. */
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "From the consultation to the final finish, everything felt so personal. The quality of the hair was incredible — six months on it still looks like the day I left the studio.",
-    name: "Amara O.",
-    detail: "Signature HD Frontal · Wig Installation",
+      "Honestly the best experience I've ever had at a salon. My wig installation looked completely natural — I keep getting asked if it's my real hair! The attention to detail is unreal. I won't be going anywhere else.",
+    name: "Chinara A.",
+    detail: "Luxury Wig Installation · London",
   },
   {
     quote:
-      "I brought in a wig I was ready to throw away. She rebuilt the hairline, re-cut it, and I genuinely could not tell it was the same unit.",
-    name: "Chidinma E.",
-    detail: "Wig Revamping",
+      "I brought in a wig I thought was completely ruined and it came back looking brand new. I was speechless. The restoration was incredible and the turnaround was really quick too.",
+    name: "Sade O.",
+    detail: "Wig Revamp & Restoration · Manchester",
   },
   {
     quote:
-      "The first braider who has never made my scalp hurt. Four weeks in and my edges are exactly where I left them.",
-    name: "Simi A.",
-    detail: "Knotless Braids",
+      "My braids are so neat, even and absolutely gorgeous. They've lasted so long too and my natural hair feels healthy underneath. The whole experience was so relaxed and comfortable.",
+    name: "Kemi W.",
+    detail: "Knotless Box Braids · Nottingham",
   },
   {
     quote:
-      "I have bought bundles from a lot of places. This is the only hair I have owned that looks better after washing than before.",
-    name: "Folake B.",
-    detail: "Raw Vietnamese Straight Bundles",
+      "Bought hair bundles here and the quality is exceptional. So soft, thick from roots to ends and absolutely zero shedding or tangling. Worth every single penny. I'll never buy hair from anywhere else.",
+    name: "Amara S.",
+    detail: "Human Hair Purchase · London",
   },
   {
     quote:
-      "She talked me out of the density I asked for and into the one I needed. That honesty is why I keep coming back.",
-    name: "Rachel M.",
-    detail: "Custom Wig Styling",
+      "The best silk press I have EVER had. My 4C hair was bone straight, incredibly shiny and still healthy. No heat damage, no dryness — just pure, gorgeous hair.",
+    name: "Adaeze R.",
+    detail: "Silk Press · Leicester",
+  },
+  {
+    quote:
+      "I've been wanting to get microblading done for years and I'm so glad I chose here. My brows look completely natural — people think they're real! The process was comfortable and the results are stunning.",
+    name: "Blessing N.",
+    detail: "Microblading · Sheffield",
+  },
+  {
+    quote:
+      "I've had frontals done at so many places and none of them compare. My hairline looked completely seamless, the lace was perfectly melted and I felt like a whole new woman.",
+    name: "Toyin B.",
+    detail: "Frontal Installation · Birmingham",
+  },
+  {
+    quote:
+      "Had my makeup done here for my birthday and I have never felt so beautiful in my life. She listened to exactly what I wanted, enhanced my features and made me glow.",
+    name: "Funmi E.",
+    detail: "Professional Makeup · Leeds",
   },
 ];
 
@@ -43,7 +62,7 @@ export const pillars: Pillar[] = [
   {
     number: "01",
     title: "Premium Quality",
-    copy: "Single-donor hair, cuticle intact and aligned. Every bundle and every unit is inspected in the studio before it is offered for sale.",
+    copy: "Raw and virgin human hair from trusted suppliers worldwide, cuticle intact and aligned. Every bundle and every unit is inspected in the studio before it is offered for sale.",
   },
   {
     number: "02",
@@ -74,16 +93,30 @@ export const categoryTiles: CategoryTile[] = [
   {
     slug: "wigs",
     title: "Wigs",
-    copy: "Luxury wigs crafted for effortless confidence.",
+    copy: "Luxury lace front wigs, finished by hand in the studio.",
     href: "/collections/wigs",
     imageSeed: "tile-wigs",
   },
   {
     slug: "human-hair",
     title: "Human Hair",
-    copy: "Premium textures selected for quality and longevity.",
+    copy: "Raw and virgin bundles, selected for quality and longevity.",
     href: "/collections/human-hair",
     imageSeed: "tile-hair",
+  },
+  {
+    slug: "frontals-closures",
+    title: "Frontals & Closures",
+    copy: "HD and Swiss lace, pre-plucked with bleached knots.",
+    href: "/collections/frontals-closures",
+    imageSeed: "tile-lace",
+  },
+  {
+    slug: "wig-installation",
+    title: "Wig Installation",
+    copy: "A flawless, undetectable install in HD lace.",
+    href: "/services/wig-installation",
+    imageSeed: "tile-install",
   },
   {
     slug: "wig-revamp",
@@ -93,9 +126,9 @@ export const categoryTiles: CategoryTile[] = [
     imageSeed: "tile-revamp",
   },
   {
-    slug: "braids-sew-ins",
-    title: "Braids & Sew-Ins",
-    copy: "Beautiful protective and statement styles.",
+    slug: "braiding",
+    title: "Braiding",
+    copy: "Protective and statement styles, braided without tension.",
     href: "/services/braiding",
     imageSeed: "tile-braids",
   },
@@ -106,7 +139,7 @@ export const instagramPosts = [
   { seed: "ig-02", alt: "Close-up of a melted HD lace hairline", caption: "The hairline is the whole job" },
   { seed: "ig-03", alt: "Knotless braids photographed from behind", caption: "Knotless, no tension" },
   { seed: "ig-04", alt: "Champagne blonde wig on a studio block", caption: "Three sessions to get here" },
-  { seed: "ig-05", alt: "Macro texture study of raw curly hair", caption: "Raw curly, straight off the donor" },
+  { seed: "ig-05", alt: "Macro texture study of raw body wave hair", caption: "Raw body wave, cuticle intact" },
   { seed: "ig-06", alt: "Studio interior with wigs on display shelves", caption: "The studio, Tuesday morning" },
   { seed: "ig-07", alt: "Bone straight bob styled on a client", caption: "Blunt bob, checked dry" },
   { seed: "ig-08", alt: "Client laughing after a sew-in appointment", caption: "This is the bit we do it for" },
@@ -122,8 +155,8 @@ export const faqGroups: FaqGroup[] = [
     title: "Ordering & Hair",
     items: [
       {
-        q: "What does single-donor hair actually mean?",
-        a: "Every strand in the bundle came from one person, and the cuticles all run in the same direction. That is why it does not tangle at the root, and why it still behaves like hair after fifty washes. Mixed-donor hair has to be acid-stripped to stop it matting, which is what makes it feel coated when new and lifeless later.",
+        q: "What type of hair do you use?",
+        a: "We specialise in sourcing the finest raw and virgin human hair from trusted suppliers worldwide. Every piece is hand-selected for its natural beauty, quality and longevity, with the cuticle intact and aligned — which is why it does not tangle at the root and still behaves like hair after fifty washes. We offer an extensive range of textures, from straight and wavy to curly and coily, in multiple lengths and custom options.",
       },
       {
         q: "How many bundles do I need?",
@@ -160,20 +193,32 @@ export const faqGroups: FaqGroup[] = [
     title: "Appointments",
     items: [
       {
-        q: "How do I book?",
-        a: "Choose your service on the booking page, pick a date and time, and confirm with a deposit. You will receive a confirmation by email immediately and a reminder 48 hours before.",
+        q: "How do I book an appointment?",
+        a: "Book directly through the Book Appointment page, call the studio on +44 7376 936 291, or send a message via the contact form. We confirm within 24 hours with your quote and the deposit that secures the slot.",
+      },
+      {
+        q: "How does the studio work — do I visit you?",
+        a: "Yes. All appointments take place at our private studio in Dagenham, Essex, where you receive a completely personalised, one-to-one experience in a comfortable and discreet setting. We are appointment-only, so every client has our full, undivided attention. The full address is shared once your appointment is confirmed.",
+      },
+      {
+        q: "How much does a service cost?",
+        a: "Every service is quoted at consultation, because the price depends on your hair, the unit and the finish you want. Tell us what you are after on the booking form or by message and we will come back with a quote and a realistic time estimate.",
       },
       {
         q: "Is a deposit required?",
-        a: "Yes. Deposits start at £25 and are deducted from your final balance. They secure the slot and are non-refundable inside 48 hours of the appointment.",
+        a: "Yes. A deposit secures the slot and is deducted from your final balance. The amount is confirmed with your booking and is non-refundable inside 48 hours of the appointment.",
+      },
+      {
+        q: "How long does a wig installation take?",
+        a: "A standard wig installation typically takes 1.5–2.5 hours depending on the style and the preparation required. Custom installs with colouring or cutting take longer, and we will advise you at the time of booking.",
       },
       {
         q: "What if I need to reschedule?",
         a: "Reschedule free of charge with more than 48 hours' notice, using the link in your confirmation email. Inside 48 hours the deposit is retained, though we will always try to help where we can.",
       },
       {
-        q: "Can I bring my own unit?",
-        a: "Absolutely. Installation is priced the same whether the unit came from us or not. If you would like it prepped, plucked or coloured first, add a revamp to your booking.",
+        q: "Can I send my own wig to be installed or revamped?",
+        a: "Absolutely. We accept client-supplied wigs for installation, revamping, styling and customisation. Please contact us first so we can advise on the best service for your wig. Installation is priced the same whether the unit came from us or not.",
       },
     ],
   },
@@ -232,7 +277,6 @@ export const helpPages: HelpPage[] = [
         body: [
           "Unopened bundles, closures and frontals with the security seal intact, within 14 days of delivery.",
           "Unworn wigs in their original packaging, with tags attached and the lace untinted and uncut.",
-          "Sealed hair care products.",
         ],
       },
       {
@@ -246,7 +290,7 @@ export const helpPages: HelpPage[] = [
       {
         heading: "Faulty items",
         body: [
-          "If something arrives damaged or is not as described, email studio@adeolagold.com within 48 hours with photographs.",
+          "If something arrives damaged or is not as described, email hello@adeolagoldbeautystudio.info within 48 hours with photographs.",
           "We will replace it or refund you in full, including return postage. No restocking fee, ever.",
         ],
       },
@@ -303,7 +347,7 @@ export const helpPages: HelpPage[] = [
       {
         heading: "Deposits",
         body: [
-          "All appointments require a deposit, starting at £25 and rising for longer services.",
+          "All appointments require a deposit. The amount is confirmed with your quote when we accept the booking, and scales with the length of the service.",
           "Deposits are deducted from your final balance on the day.",
           "Deposits are transferable once, with more than 48 hours' notice.",
         ],

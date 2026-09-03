@@ -262,7 +262,7 @@ export function ProductInfo({ product }: { product: Product }) {
         </li>
         <li className="flex items-center gap-3">
           <SparkIcon className="h-4 w-4 shrink-0 text-gold" />
-          Single-donor hair, inspected in the studio before dispatch
+          Raw and virgin hair, inspected in the studio before dispatch
         </li>
         <li className="flex items-center gap-3">
           <LockIcon className="h-4 w-4 shrink-0 text-gold" />

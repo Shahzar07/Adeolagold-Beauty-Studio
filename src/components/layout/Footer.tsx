@@ -2,12 +2,8 @@ import Link from "next/link";
 import { design } from "@/lib/design";
 import { footerColumns } from "@/lib/navigation";
 import { Newsletter } from "./Newsletter";
-import {
-  InstagramIcon,
-  PinIcon,
-  TikTokIcon,
-  WhatsAppIcon,
-} from "@/components/ui/Icons";
+import { PinIcon } from "@/components/ui/Icons";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 const paymentMethods = ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay", "Klarna"];
 
@@ -58,11 +54,15 @@ export function Footer() {
               The Studio
             </h3>
             <address className="not-italic text-[13.5px] leading-relaxed text-white/80">
-              {design.brand.address.street}
-              <br />
-              {design.brand.address.locality} {design.brand.address.postalCode}
-              <br />
-              <a href={`tel:${design.brand.phone.replace(/\s/g, "")}`} className="link-underline mt-2 inline-block">
+              {design.brand.location.displayLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+              <a
+                href={`tel:${design.brand.phoneE164}`}
+                className="link-underline mt-2 inline-block"
+              >
                 {design.brand.phone}
               </a>
               <br />
@@ -84,27 +84,10 @@ export function Footer() {
         {/* Base bar */}
         <div className="flex flex-col gap-8 border-t border-white/10 py-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-1">
-            <a
-              href={design.brand.instagramUrl}
-              aria-label="Adeolagold on Instagram"
-              className="-ml-2.5 flex h-11 w-11 items-center justify-center text-white/70 transition-colors duration-[180ms] hover:text-gold"
-            >
-              <InstagramIcon className="h-[18px] w-[18px]" />
-            </a>
-            <a
-              href="https://tiktok.com/@adeolagold"
-              aria-label="Adeolagold on TikTok"
-              className="flex h-11 w-11 items-center justify-center text-white/70 transition-colors duration-[180ms] hover:text-gold"
-            >
-              <TikTokIcon className="h-[18px] w-[18px]" />
-            </a>
-            <a
-              href={`https://wa.me/${design.brand.phone.replace(/[^0-9]/g, "")}`}
-              aria-label="Message the studio on WhatsApp"
-              className="flex h-11 w-11 items-center justify-center text-white/70 transition-colors duration-[180ms] hover:text-gold"
-            >
-              <WhatsAppIcon className="h-[18px] w-[18px]" />
-            </a>
+            <SocialLinks
+              className="-ml-2.5"
+              linkClassName="text-white/70 hover:text-gold"
+            />
             <Link
               href="/contact"
               aria-label="Find the studio"

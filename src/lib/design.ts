@@ -12,21 +12,61 @@ export const design = {
     positioning: "Luxury Hair & Beauty",
     tagline: "The Art of Beautiful Hair",
     promise: "Beautiful hair. Exceptional quality. Luxury finishes.",
-    instagram: "@adeolagold",
-    instagramUrl: "https://instagram.com/adeolagold",
-    email: "studio@adeolagold.com",
-    phone: "+44 20 7946 0321",
-    address: {
-      street: "18 Wellbourne Mews",
-      locality: "London",
-      region: "Greater London",
-      postalCode: "SE15 4QP",
+    intro:
+      "Luxury wig installations and premium human hair — by private appointment only. Raw and virgin human hair sourced from trusted global suppliers. UK-wide online orders available.",
+    email: "hello@adeolagoldbeautystudio.info",
+    /** E.164, used for tel: and wa.me links. */
+    phoneE164: "+447376936291",
+    /** Display form. */
+    phone: "+44 7376 936 291",
+    social: {
+      instagram: {
+        handle: "@adeolagoldbeautystudio",
+        url: "https://www.instagram.com/adeolagoldbeautystudio",
+      },
+      tiktok: {
+        handle: "@adeolagoldbeautystudio",
+        url: "https://www.tiktok.com/@adeolagoldbeautystudio",
+      },
+      facebook: {
+        handle: "AdeolagoldBeautiesStudio",
+        url: "https://www.facebook.com/AdeolagoldBeautiesStudio",
+      },
+      youtube: {
+        handle: "@Adeolagoldstyle",
+        url: "https://www.youtube.com/@Adeolagoldstyle",
+      },
+    },
+    location: {
+      /**
+       * The studio is private and appointment-only. Following the business's own
+       * published practice, the street address is not shown on the site or in
+       * structured data — clients are given it once an appointment is confirmed.
+       * It is held here for invoicing and internal reference only.
+       */
+      street: "598 Holly Lane",
+      locality: "Dagenham",
+      region: "Essex",
       country: "GB",
+      areaServed: "Essex, London & UK-wide delivery",
+      /** What the public pages render in place of a street address. */
+      displayLines: [
+        "Private studio · by appointment only",
+        "Dagenham, Essex",
+      ],
+      note: "The full address is shared once your appointment is confirmed.",
     },
     hours: [
-      { days: "Tuesday — Friday", time: "09:00 — 19:00" },
-      { days: "Saturday", time: "08:30 — 18:00" },
-      { days: "Sunday — Monday", time: "By appointment" },
+      { days: "Monday — Wednesday", time: "10:00 — 19:00" },
+      { days: "Thursday — Friday", time: "10:00 — 20:00" },
+      { days: "Saturday", time: "09:00 — 19:00" },
+      { days: "Sunday", time: "Closed" },
+    ],
+    /** Machine-readable opening hours for LocalBusiness structured data. */
+    openingHours: [
+      { days: ["Monday", "Tuesday", "Wednesday"], opens: "10:00", closes: "19:00" },
+      { days: ["Thursday", "Friday"], opens: "10:00", closes: "20:00" },
+      { days: ["Saturday"], opens: "09:00", closes: "19:00" },
     ],
   },
 
@@ -195,15 +235,6 @@ export const design = {
     badges: ["NEW", "BESTSELLER", "LIMITED"],
   },
 
-  services: [
-    { title: "Wig Installation", slug: "wig-installation" },
-    { title: "Wig Revamping", slug: "wig-revamping" },
-    { title: "Braiding", slug: "braiding" },
-    { title: "Sew-In", slug: "sew-in" },
-    { title: "Custom Wig Styling", slug: "custom-wig-styling" },
-    { title: "Hair Consultation", slug: "hair-consultation" },
-  ],
-
   collections: [
     { title: "Wigs", slug: "wigs" },
     { title: "Human Hair", slug: "human-hair" },
@@ -221,8 +252,8 @@ export const design = {
   seo: {
     title: "Adeolagold Beauty Studio | Luxury Wigs, Human Hair & Beauty Services",
     description:
-      "Discover premium human hair, luxury wigs and professional beauty services at Adeolagold Beauty Studio. Shop premium hair or book your next appointment.",
-    url: "https://www.adeolagold.com",
+      "Luxury wig installation, wig revamps, braiding, silk press, microblading and professional makeup at a private Essex studio. Premium raw and virgin human hair, delivered UK-wide.",
+    url: "https://www.adeolagoldbeautystudio.co.uk",
   },
 } as const;
 

@@ -10,7 +10,7 @@ import { EditorialImage, ImageFrame } from "@/components/media/EditorialImage";
 export const metadata = pageMeta({
   title: "Book an Appointment",
   description:
-    "Book your next appointment at Adeolagold Beauty Studio — wig installation, revamping, braiding, sew-ins and custom styling. Choose a service, date and time in under a minute.",
+    "Book your next appointment at Adeolagold Beauty Studio — wig installation, revamps, braiding, silk press, microblading and makeup. Choose a service, date and time in under a minute; we confirm within 24 hours.",
   path: "/book",
 });
 
@@ -65,10 +65,15 @@ export default async function BookPage({
               <div className="mt-7 border-t border-line pt-6">
                 <p className="eyebrow mb-4">The studio</p>
                 <address className="not-italic text-[13.5px] leading-relaxed text-ink-soft">
-                  {design.brand.address.street}
-                  <br />
-                  {design.brand.address.locality} {design.brand.address.postalCode}
+                  {design.brand.location.displayLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </address>
+                <p className="mt-3 text-[12.5px] leading-relaxed text-muted">
+                  {design.brand.location.note}
+                </p>
                 <dl className="mt-5 flex flex-col gap-2 text-[12.5px] text-muted">
                   {design.brand.hours.map((slot) => (
                     <div key={slot.days} className="flex justify-between gap-4">

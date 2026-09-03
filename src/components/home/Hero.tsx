@@ -49,15 +49,17 @@ export function Hero() {
               className="animate-fade-up mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-7"
               style={{ animationDelay: "320ms" }}
             >
+              {/* Claims, not metrics — the studio publishes no client count or
+                  rating, so none are invented here. */}
               {[
-                { value: "Single", label: "Donor hair, always" },
-                { value: "2,400+", label: "Clients served" },
-                { value: "4.9", label: "Average rating" },
+                { value: "Raw & virgin", label: "Human hair, always" },
+                { value: "One at a time", label: "Private studio, by appointment" },
+                { value: "UK-wide", label: "Delivery on every order" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>
-                    <span className="block font-display text-[26px] leading-none">
+                    <span className="block font-display text-[22px] leading-tight">
                       {stat.value}
                     </span>
                     <span className="mt-2 block text-[11px] leading-snug text-muted">
@@ -86,7 +88,7 @@ export function Hero() {
             {/* Corner caption — the only type over the image. */}
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 lg:bottom-8 lg:left-8 lg:right-8">
               <p className="max-w-[24ch] text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-white/80">
-                Autumn Campaign — Signature HD Frontal
+                In the studio — 13×6 Straight Lace Front
               </p>
               <a
                 href="#the-edit"

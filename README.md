@@ -1,7 +1,8 @@
 # Adeolagold Beauty Studio
 
 A premium, production-ready storefront for **Adeolagold Beauty Studio** — luxury wigs,
-single-donor human hair, and professional beauty services.
+raw and virgin human hair, and professional beauty services, from a private appointment-only
+studio in Dagenham, Essex.
 
 Built to the brief in `MASTER WEBSITE PROMPT — ADEOLAGOLD BEAUTY STUDIO` and the token
 system in `design.ts`.
@@ -85,11 +86,11 @@ CDN (Shopify Files, Cloudinary), add the host to `images.remotePatterns` in `nex
 | --- | --- |
 | `/` | Hero, brand statement, categories, The Adeolagold Edit, campaign, services, about, four pillars, testimonials, journal, Instagram |
 | `/shop` | Full collection · filter drawer, sort, active-filter chips, empty state. Accepts `?texture=` / `?category=` deep links |
-| `/collections/[slug]` | `wigs`, `human-hair`, `new-arrivals`, `best-sellers`, `products` |
-| `/products/[slug]` | 18 products · gallery (desktop rail / mobile swipe), length + density + colour selectors, sticky info column, accordion, sticky mobile add-to-cart, related |
-| `/services` + `/services/[slug]` | 6 services as editorial expanding rows, not cards |
-| `/book` | 5-step flow: service → date → time → details → confirmation, with deposit summary |
-| `/about` | Story, timeline, founder imagery, standards, visit |
+| `/collections/[slug]` | `wigs`, `human-hair`, `frontals-closures`, `new-arrivals`, `best-sellers` |
+| `/products/[slug]` | 7 products · gallery (desktop rail / mobile swipe), length + density + colour selectors, sticky info column, accordion, sticky mobile add-to-cart, related |
+| `/services` + `/services/[slug]` | 12 services as editorial expanding rows, not cards |
+| `/book` | 5-step flow: service → date → time → details → request, with an appointment summary |
+| `/about` | Story, what to expect, founder imagery, standards, visit |
 | `/journal` + `/journal/[slug]` | 6 long-form articles, magazine layout |
 | `/cart`, `/checkout` | Full bag page; checkout with delivery methods, discount codes, payment selection, order confirmation |
 | `/search` | Products, services and journal results |
@@ -169,22 +170,54 @@ swapped for a CMS or the Shopify Storefront API without touching components.
 
 ---
 
+## Source of the content
+
+Everything the site states about the business — name, phone, email, opening hours, social
+accounts, service list and descriptions, client reviews, product listings with their prices,
+ratings and review counts, and the "private appointment-only studio in Essex" positioning —
+is taken from the studio's own published material (its live site at
+`adeolagoldbeautystudio.co.uk` and the company record). Nothing about the business is
+invented here.
+
+Two consequences worth knowing before editing:
+
+- **No service prices.** The studio quotes at consultation and publishes no service prices,
+  so `Service.fromPrice` and `Service.depositPence` are optional and currently unset. The UI
+  falls back to "Quoted at consultation" / "Confirmed on booking" via `formatServicePrice()`
+  in `src/lib/format.ts`. Setting a real `fromPrice` on a service immediately restores the
+  "From £x" treatment everywhere, including the `Offer` in its JSON-LD.
+- **No street address.** The studio is private and appointment-only, and does not publish its
+  street address; clients receive it on confirmation. `design.brand.location.street` holds it
+  for internal reference, but the public pages and the `PostalAddress` in structured data
+  render `location.displayLines` (locality and region only). Publishing the street is a
+  one-line change if the studio wants it — but it should be their call.
+
+---
+
 ## Status / remaining work
 
-**Done and verified:** build, lint and typecheck all pass. Homepage, shop, PDP and booking
-verified visually at 1440 / 768 / 375 with no console errors and no horizontal overflow.
+**Done and verified:** `build`, `lint` and `typecheck` all pass. Every route was swept with
+Playwright at 1440 / 768 / 375 — 19 pages × 3 breakpoints, all HTTP 200, no console errors,
+no horizontal overflow. Interaction states captured and checked: mobile menu (closed and with
+a nav group expanded), search drawer with results, cart drawer, filter drawer, toast, both
+mega menus, and all five booking steps.
 
 **Remaining:**
 
-1. **Visual QA pass** on the pages not yet screenshotted at every breakpoint —
-   `/about`, `/journal`, `/journal/[slug]`, `/cart`, `/checkout`, `/search`, `/contact`,
-   `/faqs`, `/help/[slug]`, `/account`, `/wishlist`, `/collections/[slug]`, `/services/[slug]`.
-2. **Interaction states** not yet captured: cart drawer, filter drawer, mobile menu,
-   search drawer, mega menu, toasts, booking steps 2–5.
-3. **Real photography** — swap the generative art per the section above.
-4. **Wire the integration points** in the table above.
-5. **Lighthouse run** against a deployed build.
-6. Replace placeholder studio details (address, phone, `@adeolagold` handle, hours) in
-   `src/lib/design.ts`, and set the real domain in `design.seo.url` (used for canonicals,
-   sitemap and JSON-LD).
-
+1. **Real photography** — swap the generative art per the imagery section above. External
+   stock CDNs are blocked from this environment, so every slot still renders seeded
+   generative artwork; each already accepts a real `src` and switches to `next/image`.
+2. **Wire the integration points** in the table above — each is a single commented
+   `setTimeout`.
+3. **Lighthouse run** against a deployed build.
+4. **Confirm the commercial details the studio has not published anywhere**, all of which are
+   currently this build's assumptions rather than facts:
+   - free UK delivery over £150 (`FREE_SHIPPING_THRESHOLD` in `src/lib/format.ts`, and the
+     announcement bar), next-day at £8.95, and the international shipping copy in
+     `src/lib/content.ts`;
+   - the 14-day returns window and the 48-hour cancellation terms in `helpPages`;
+   - variant uplifts for length, density and colour in `src/lib/catalog.ts` — base prices are
+     the studio's real listings, the per-option deltas are not.
+5. **Expand the catalogue** if the studio stocks more than the seven listings it publishes
+   online. Adding an entry to `products` in `src/lib/catalog.ts` is all that is needed; the
+   shop, collections, filters, search, sitemap and JSON-LD all derive from it.

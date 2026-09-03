@@ -153,6 +153,20 @@ export const TikTokIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const FacebookIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M15.4 8.2h-1.6c-.8 0-1.3.5-1.3 1.3v1.6h2.8l-.4 2.8h-2.4V21" />
+    <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+  </Icon>
+);
+
+export const YouTubeIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="2.8" y="5.6" width="18.4" height="12.8" rx="3.6" />
+    <path d="M10.4 9.4l4.6 2.6-4.6 2.6z" />
+  </Icon>
+);
+
 export const WhatsAppIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M20 12a8 8 0 01-11.9 7L4 20l1.1-4A8 8 0 1120 12z" />

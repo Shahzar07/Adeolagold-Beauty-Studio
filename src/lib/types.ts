@@ -33,7 +33,7 @@ export interface Product {
   /** Short qualifier shown under the product name on cards. */
   subtitle: string;
   collections: string[];
-  category: "wigs" | "human-hair" | "products";
+  category: "wigs" | "human-hair" | "frontals-closures";
   /** Base price in pence. */
   price: number;
   compareAtPrice?: number;
@@ -61,11 +61,16 @@ export interface Service {
   title: string;
   summary: string;
   description: string;
-  fromPrice: number;
+  /**
+   * Starting price in pence. Optional — the studio quotes at consultation, so
+   * the UI falls back to "Quoted at consultation" wherever this is absent.
+   */
+  fromPrice?: number;
   duration: string;
   includes: string[];
   aftercare?: string;
-  depositPence: number;
+  /** Booking deposit in pence. Optional for the same reason as `fromPrice`. */
+  depositPence?: number;
 }
 
 export interface JournalPost {

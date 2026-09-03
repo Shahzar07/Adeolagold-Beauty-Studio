@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 export const metadata = pageMeta({
   title: "FAQs",
   description:
-    "Answers on single-donor hair, how many bundles you need, density, shipping, returns, deposits and rescheduling at Adeolagold Beauty Studio.",
+    "Answers on the hair we use, how many bundles you need, density, shipping, returns, deposits and rescheduling at Adeolagold Beauty Studio.",
   path: "/faqs",
 });
 

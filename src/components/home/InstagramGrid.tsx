@@ -18,11 +18,11 @@ export function InstagramGrid() {
             </h2>
           </div>
           <a
-            href={design.brand.instagramUrl}
+            href={design.brand.social.instagram.url}
             className="link-underline inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.14em] text-ink"
           >
             <InstagramIcon className="h-4 w-4" />
-            {design.brand.instagram}
+            {design.brand.social.instagram.handle}
           </a>
         </div>
 
@@ -30,7 +30,7 @@ export function InstagramGrid() {
           {instagramPosts.map((post, index) => (
             <Reveal key={post.seed} as="li" delay={Math.min(index, 7) * 55}>
               <a
-                href={design.brand.instagramUrl}
+                href={design.brand.social.instagram.url}
                 className="group relative block"
                 aria-label={`${post.caption} — view on Instagram`}
               >

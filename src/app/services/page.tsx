@@ -14,7 +14,7 @@ import { CheckIcon } from "@/components/ui/Icons";
 export const metadata = pageMeta({
   title: "Services",
   description:
-    "Wig installation, revamping, braiding, sew-ins, custom wig styling and consultations at Adeolagold Beauty Studio in London. Prices, durations and what each service includes.",
+    "Luxury wig installation, wig revamps, frontal and closure installs, sew-ins, braiding, silk press, custom wig making, hair treatments, microblading and professional makeup at Adeolagold Beauty Studio, a private appointment-only studio in Dagenham, Essex.",
   path: "/services",
 });
 

@@ -60,8 +60,12 @@ export function Testimonials() {
           </blockquote>
         </div>
 
-        <div className="mt-10 flex items-center justify-between gap-6 border-t border-line pt-6">
-          <div className="flex items-center gap-2" role="tablist" aria-label="Choose a testimonial">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-line pt-6">
+          <div
+            className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-0"
+            role="tablist"
+            aria-label="Choose a testimonial"
+          >
             {testimonials.map((testimonial, i) => (
               <button
                 key={testimonial.name}
@@ -70,7 +74,7 @@ export function Testimonials() {
                 aria-selected={i === index}
                 aria-label={`Testimonial ${i + 1} of ${testimonials.length}`}
                 onClick={() => setIndex(i)}
-                className="flex h-11 w-6 items-center justify-center"
+                className="flex h-11 w-5 shrink-0 items-center justify-center sm:w-6"
               >
                 <span
                   className={cx(

@@ -2,6 +2,7 @@ import { design } from "./design";
 import { absoluteUrl, SITE_URL } from "./seo";
 import type { JournalPost, Product, Service } from "./types";
 import { priceFrom } from "./catalog";
+import { services } from "./services";
 
 /* Structured data helpers. Each returns a plain object that is serialised into
    a <script type="application/ld+json"> tag by the <JsonLd> component. */
@@ -14,34 +15,28 @@ export function organizationSchema() {
     name: design.brand.name,
     description: design.seo.description,
     url: SITE_URL,
-    telephone: design.brand.phone,
+    telephone: design.brand.phoneE164,
     email: design.brand.email,
     priceRange: "££",
     image: absoluteUrl("/opengraph-image"),
+    // The studio is private and appointment-only, so the street address is
+    // deliberately omitted here as it is on the rest of the site.
     address: {
       "@type": "PostalAddress",
-      streetAddress: design.brand.address.street,
-      addressLocality: design.brand.address.locality,
-      addressRegion: design.brand.address.region,
-      postalCode: design.brand.address.postalCode,
-      addressCountry: design.brand.address.country,
+      addressLocality: design.brand.location.locality,
+      addressRegion: design.brand.location.region,
+      addressCountry: design.brand.location.country,
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "19:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: "08:30",
-        closes: "18:00",
-      },
-    ],
-    sameAs: [design.brand.instagramUrl],
-    makesOffer: design.services.map((s) => ({
+    areaServed: design.brand.location.areaServed,
+    publicAccess: false,
+    openingHoursSpecification: design.brand.openingHours.map((slot) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: slot.days,
+      opens: slot.opens,
+      closes: slot.closes,
+    })),
+    sameAs: Object.values(design.brand.social).map((account) => account.url),
+    makesOffer: services.map((s) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: s.title },
       url: absoluteUrl(`/services/${s.slug}`),
@@ -102,13 +97,20 @@ export function serviceSchema(service: Service) {
     description: service.summary,
     serviceType: service.title,
     provider: { "@id": `${SITE_URL}/#studio` },
-    areaServed: design.brand.address.locality,
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "GBP",
-      price: (service.fromPrice / 100).toFixed(2),
-      url: absoluteUrl(`/book?service=${service.slug}`),
-    },
+    areaServed: design.brand.location.areaServed,
+    url: absoluteUrl(`/services/${service.slug}`),
+    // Services are quoted at consultation, so an Offer is emitted only when a
+    // real starting price exists — never a made-up one.
+    ...(service.fromPrice === undefined
+      ? {}
+      : {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "GBP",
+            price: (service.fromPrice / 100).toFixed(2),
+            url: absoluteUrl(`/book?service=${service.slug}`),
+          },
+        }),
   };
 }
 

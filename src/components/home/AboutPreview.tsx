@@ -41,9 +41,9 @@ export function AboutPreview() {
               as exceptional as it looks.
             </p>
             <p className="mt-5 text-[14.5px] leading-relaxed text-muted">
-              What began with one chair and a reputation built entirely on referrals is now a
-              studio, a workshop and a hair line — still run on the same principle. Take fewer
-              clients. Do the work properly. Tell the truth about what hair can and cannot do.
+              Every appointment takes place at our private, appointment-only studio in Essex — a
+              calm, discreet space where the session is entirely one-to-one. We source raw and
+              virgin human hair from trusted suppliers worldwide, and deliver UK-wide.
             </p>
             <ButtonLink href="/about" variant="secondary" className="mt-9">
               Read our story
