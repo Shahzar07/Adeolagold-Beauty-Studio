@@ -1,0 +1,498 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   ADEOLAGOLD BEAUTY STUDIO — design tokens
+   Mirrors src/lib/design.ts. Tailwind v4 generates utilities from these.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-background: #f8f5f0;
+  --color-surface: #efe9e1;
+  --color-surface-light: #fcfaf7;
+
+  --color-ink: #241c18;
+  --color-ink-soft: #6e5a4d;
+
+  --color-gold: #b89b65;
+  --color-gold-light: #d8c59d;
+
+  --color-line: #ded5cb;
+  --color-muted: #8d8178;
+
+  --color-black: #171412;
+  --color-success: #526b55;
+  --color-error: #9b4d45;
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-subtle: 2px;
+  --radius-small: 4px;
+  --radius-medium: 8px;
+
+  --shadow-subtle: 0 8px 30px rgb(36 28 24 / 0.06);
+  --shadow-elevated: 0 20px 60px rgb(36 28 24 / 0.1);
+
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --breakpoint-xs: 30rem; /* 480 */
+  --breakpoint-sm: 40rem; /* 640 */
+  --breakpoint-md: 48rem; /* 768 */
+  --breakpoint-lg: 64rem; /* 1024 */
+  --breakpoint-xl: 80rem; /* 1280 */
+  --breakpoint-2xl: 90rem; /* 1440 */
+
+  --container-content: 1240px;
+  --container-wide: 1440px;
+  --container-narrow: 760px;
+}
+
+@layer base {
+  :root {
+    --page-padding: 20px;
+    --section-space: 72px;
+    --header-height: 68px;
+    --announcement-height: 38px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --page-padding: 32px;
+      --section-space: 96px;
+      --header-height: 88px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --page-padding: 48px;
+      --section-space: clamp(96px, 10vw, 180px);
+    }
+  }
+
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, brand-consistent focus for keyboard users only. */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Remove the number-input spinners inside quantity steppers. */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  /* Page gutter + max width. Used by nearly every section. */
+  .container-page {
+    width: 100%;
+    max-width: calc(var(--container-content) + var(--page-padding) * 2);
+    margin-inline: auto;
+    padding-inline: var(--page-padding);
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: calc(var(--container-wide) + var(--page-padding) * 2);
+    margin-inline: auto;
+    padding-inline: var(--page-padding);
+  }
+
+  .container-narrow {
+    width: 100%;
+    max-width: calc(var(--container-narrow) + var(--page-padding) * 2);
+    margin-inline: auto;
+    padding-inline: var(--page-padding);
+  }
+
+  .section {
+    padding-block: var(--section-space);
+  }
+
+  .section-sm {
+    padding-block: calc(var(--section-space) * 0.62);
+  }
+
+  /* Small tracked uppercase label — the brand's connective tissue. */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    line-height: 1;
+  }
+
+  .display-1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.85rem, 8.2vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+  }
+
+  .display-2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5.4vw, 4.25rem);
+    line-height: 1.03;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+
+  .display-3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .display-4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .body-lg {
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+  }
+
+  /* Underline that grows from the left on hover — used for text links. */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 350ms var(--ease-lux);
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--color-line);
+    border: 0;
+  }
+
+  /* Fine paper grain laid over editorial imagery. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+  }
+
+  .field {
+    width: 100%;
+    height: 52px;
+    padding-inline: 16px;
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-line);
+    border-radius: 2px;
+    font-size: 14px;
+    color: var(--color-ink);
+    transition: border-color 180ms var(--ease-lux);
+  }
+
+  .field::placeholder {
+    color: var(--color-muted);
+  }
+
+  .field:hover {
+    border-color: var(--color-ink-soft);
+  }
+
+  .field:focus {
+    border-color: var(--color-gold);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(184 155 101 / 0.16);
+  }
+
+  textarea.field {
+    height: auto;
+    padding-block: 14px;
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .snap-x-gallery {
+    scroll-snap-type: x mandatory;
+  }
+
+  .snap-item {
+    scroll-snap-align: center;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion — scroll reveals, drawers, toasts. Everything is 150–900ms and
+   eased with the brand curve so it reads as quiet luxury, never bouncy.
+   ------------------------------------------------------------------ */
+@keyframes ag-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ag-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ag-slide-in-right {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ag-slide-in-left {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ag-slide-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ag-toast-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ag-bag-pulse {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.28);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ag-shimmer {
+  from {
+    background-position: -180% 0;
+  }
+  to {
+    background-position: 180% 0;
+  }
+}
+
+@keyframes ag-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Scroll reveal: elements start hidden and are released by an IntersectionObserver. */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 900ms var(--ease-lux),
+    transform 900ms var(--ease-lux);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+.animate-fade-up {
+  animation: ag-fade-up 600ms var(--ease-lux) both;
+}
+
+.animate-fade-in {
+  animation: ag-fade-in 400ms var(--ease-lux) both;
+}
+
+.animate-slide-in-right {
+  animation: ag-slide-in-right 420ms var(--ease-lux) both;
+}
+
+.animate-slide-in-left {
+  animation: ag-slide-in-left 420ms var(--ease-lux) both;
+}
+
+.animate-slide-down {
+  animation: ag-slide-down 350ms var(--ease-lux) both;
+}
+
+.animate-toast-in {
+  animation: ag-toast-in 350ms var(--ease-lux) both;
+}
+
+.animate-bag-pulse {
+  animation: ag-bag-pulse 480ms var(--ease-lux);
+}
+
+.skeleton {
+  background:
+    linear-gradient(
+      100deg,
+      transparent 20%,
+      rgb(255 255 255 / 0.65) 42%,
+      transparent 64%
+    ),
+    var(--color-surface);
+  background-size: 220% 100%;
+  animation: ag-shimmer 1.6s linear infinite;
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion — honour the OS preference everywhere.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
