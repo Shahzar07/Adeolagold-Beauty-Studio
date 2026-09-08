@@ -11,10 +11,10 @@ export function ProductBadge({
 }) {
   const tone =
     badge === "SOLD OUT"
-      ? "bg-white/85 text-muted"
+      ? "bg-black/80 text-white/70"
       : badge === "LIMITED" || badge === "SALE"
-        ? "bg-ink/90 text-white"
-        : "bg-white/90 text-ink";
+        ? "bg-gold text-black"
+        : "bg-white/92 text-black";
 
   return (
     <span

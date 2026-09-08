@@ -44,7 +44,7 @@ export function InstagramGrid() {
                 </ImageFrame>
                 <span
                   aria-hidden="true"
-                  className="absolute inset-0 flex items-center justify-center bg-ink/50 opacity-0 transition-opacity duration-[350ms] ease-lux group-hover:opacity-100"
+                  className="absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-[350ms] ease-lux group-hover:opacity-100"
                 >
                   <InstagramIcon className="h-5 w-5 text-white" />
                 </span>

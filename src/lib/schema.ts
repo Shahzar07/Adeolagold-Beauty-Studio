@@ -26,6 +26,13 @@ export function organizationSchema() {
       postalCode: design.brand.address.postalCode,
       addressCountry: design.brand.address.country,
     },
+    hasMap: design.brand.address.mapsUrl,
+    areaServed: [
+      { "@type": "Place", name: "Goodmayes" },
+      { "@type": "Place", name: "Ilford" },
+      { "@type": "Place", name: "Romford" },
+      { "@type": "Place", name: "London" },
+    ],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -40,7 +47,11 @@ export function organizationSchema() {
         closes: "18:00",
       },
     ],
-    sameAs: [design.brand.instagramUrl],
+    sameAs: [
+      design.brand.instagramUrl,
+      design.brand.tiktokUrl,
+      design.brand.facebookUrl,
+    ],
     makesOffer: design.services.map((s) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: s.title },

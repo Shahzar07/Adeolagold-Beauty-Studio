@@ -16,7 +16,7 @@ export default async function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: design.colors.ink,
+          background: design.colors.background,
           padding: "72px 80px",
           color: "#FFFFFF",
         }}
@@ -61,7 +61,7 @@ export default async function OpenGraphImage() {
             color: design.colors.goldLight,
           }}
         >
-          <div>Shop hair</div>
+          <div>{design.brand.address.oneLine}</div>
           <div>Book an appointment</div>
         </div>
       </div>

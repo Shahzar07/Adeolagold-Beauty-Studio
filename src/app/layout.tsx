@@ -38,7 +38,9 @@ export const metadata: Metadata = {
     "luxury wigs",
     "human hair",
     "HD lace frontal",
-    "wig installation London",
+    "wig installation Goodmayes",
+    "hair salon Ilford",
+    "beauty studio IG3",
     "wig revamping",
     "braiding",
     "sew-in",
@@ -70,7 +72,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: design.colors.background,
-  colorScheme: "light",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
 };

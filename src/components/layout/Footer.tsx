@@ -9,11 +9,11 @@ import {
   WhatsAppIcon,
 } from "@/components/ui/Icons";
 
-const paymentMethods = ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay", "Klarna"];
+const paymentMethods = ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay", "Klarna", "Bank Transfer"];
 
 export function Footer() {
   return (
-    <footer className="mt-auto bg-ink text-white">
+    <footer className="mt-auto border-t border-line bg-surface text-white">
       <div className="container-wide">
         {/* Newsletter */}
         <div className="grid gap-10 border-b border-white/10 py-16 lg:grid-cols-2 lg:gap-20 lg:py-20">
@@ -60,7 +60,18 @@ export function Footer() {
             <address className="not-italic text-[13.5px] leading-relaxed text-white/80">
               {design.brand.address.street}
               <br />
-              {design.brand.address.locality} {design.brand.address.postalCode}
+              {design.brand.address.locality}
+              <br />
+              {design.brand.address.region} {design.brand.address.postalCode}
+              <br />
+              <a
+                href={design.brand.address.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="link-underline mt-2 inline-block text-gold"
+              >
+                Get directions
+              </a>
               <br />
               <a href={`tel:${design.brand.phone.replace(/\s/g, "")}`} className="link-underline mt-2 inline-block">
                 {design.brand.phone}
@@ -92,7 +103,7 @@ export function Footer() {
               <InstagramIcon className="h-[18px] w-[18px]" />
             </a>
             <a
-              href="https://tiktok.com/@adeolagold"
+              href={design.brand.tiktokUrl}
               aria-label="Adeolagold on TikTok"
               className="flex h-11 w-11 items-center justify-center text-white/70 transition-colors duration-[180ms] hover:text-gold"
             >

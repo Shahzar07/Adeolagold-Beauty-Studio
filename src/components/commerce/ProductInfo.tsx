@@ -333,8 +333,8 @@ function OptionRow({
                 unavailable
                   ? "cursor-not-allowed border-line text-muted/60 line-through"
                   : isSelected
-                    ? "border-ink bg-ink text-white"
-                    : "border-line text-ink-soft hover:border-ink hover:text-ink",
+                    ? "border-gold bg-gold text-black"
+                    : "border-line text-ink-soft hover:border-gold hover:text-ink",
               )}
             >
               <input
@@ -382,7 +382,7 @@ function SwatchRow({
               title={option.label}
               className={cx(
                 "flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border transition-colors duration-[180ms]",
-                isSelected ? "border-ink" : "border-transparent hover:border-line",
+                isSelected ? "border-gold" : "border-transparent hover:border-line",
               )}
             >
               <input
@@ -395,7 +395,7 @@ function SwatchRow({
               <span
                 aria-hidden="true"
                 className="h-7 w-7 rounded-full border border-black/10"
-                style={{ backgroundColor: option.swatch ?? "#DED5CB" }}
+                style={{ backgroundColor: option.swatch ?? "#2A2724" }}
               />
               <span className="sr-only">{option.label}</span>
             </label>

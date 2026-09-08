@@ -65,7 +65,7 @@ export function SortDropdown({
         <ul
           role="listbox"
           aria-labelledby={id}
-          className="animate-slide-down absolute right-0 top-full z-40 mt-1 w-56 border border-line bg-white py-1 shadow-subtle"
+          className="animate-slide-down absolute right-0 top-full z-40 mt-1 w-56 border border-line bg-surface-light py-1 shadow-elevated"
         >
           {sortOptions.map((option) => (
             <li key={option.value}>

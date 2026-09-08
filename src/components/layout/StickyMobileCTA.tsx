@@ -31,7 +31,7 @@ export function StickyMobileCTA() {
     >
       <Link
         href="/book"
-        className="flex h-[52px] w-full items-center justify-center gap-2.5 rounded-subtle bg-ink text-[12px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-[350ms] ease-lux hover:bg-gold"
+        className="flex h-[52px] w-full items-center justify-center gap-2.5 rounded-subtle bg-gold text-[12px] font-medium uppercase tracking-[0.12em] text-black transition-colors duration-[350ms] ease-lux hover:bg-gold-light"
       >
         <CalendarIcon className="h-4 w-4" />
         Book Appointment

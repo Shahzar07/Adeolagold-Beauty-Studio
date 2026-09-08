@@ -14,7 +14,7 @@ import { CheckIcon } from "@/components/ui/Icons";
 export const metadata = pageMeta({
   title: "Services",
   description:
-    "Wig installation, revamping, braiding, sew-ins, custom wig styling and consultations at Adeolagold Beauty Studio in London. Prices, durations and what each service includes.",
+    "Wig installation, revamping, braiding, sew-ins, custom wig styling and consultations at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF. Prices, durations and what each service includes.",
   path: "/services",
 });
 

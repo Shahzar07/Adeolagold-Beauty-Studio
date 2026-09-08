@@ -10,11 +10,11 @@ const base =
   "disabled:cursor-not-allowed disabled:opacity-45 select-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-ink text-white hover:bg-gold",
-  secondary: "border border-ink text-ink hover:bg-ink hover:text-white",
-  gold: "bg-gold text-white hover:bg-ink",
-  ghost: "border border-line text-ink hover:border-ink",
-  onDark: "border border-white/45 text-white hover:bg-white hover:text-ink",
+  primary: "bg-gold text-black hover:bg-gold-light",
+  secondary: "border border-ink text-ink hover:bg-ink hover:text-background",
+  gold: "bg-gold text-black hover:bg-gold-light",
+  ghost: "border border-line text-ink hover:border-gold hover:text-gold",
+  onDark: "border border-white/45 text-white hover:bg-white hover:text-black",
   text: "px-0 text-ink underline underline-offset-[6px] decoration-[0.5px] hover:decoration-gold hover:text-gold",
 };
 

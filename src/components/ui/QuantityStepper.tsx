@@ -26,7 +26,7 @@ export function QuantityStepper({
 
   return (
     <div
-      className={cx("inline-flex items-center border border-line bg-white", className)}
+      className={cx("inline-flex items-center border border-line bg-surface", className)}
       role="group"
       aria-label={label}
     >

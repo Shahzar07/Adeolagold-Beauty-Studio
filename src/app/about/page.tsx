@@ -31,7 +31,7 @@ const timeline = [
   {
     year: "2019",
     title: "The first studio",
-    copy: "A dedicated space opens in south London. Bookings move to one client at a time — a decision that has never been reversed.",
+    copy: "A dedicated space opens on Holly Lane in Goodmayes. Bookings move to one client at a time — a decision that has never been reversed.",
   },
   {
     year: "2022",
@@ -243,8 +243,18 @@ export default function AboutPage() {
               <br />
               {design.brand.address.locality}
               <br />
+              {design.brand.address.region}
+              <br />
               {design.brand.address.postalCode}
             </address>
+            <a
+              href={design.brand.address.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline mt-3 inline-block text-[13px] text-gold"
+            >
+              Get directions
+            </a>
           </Reveal>
           <Reveal delay={160} className="lg:col-span-4 lg:col-start-9">
             <dl className="flex flex-col gap-2 text-[13.5px] text-ink-soft">

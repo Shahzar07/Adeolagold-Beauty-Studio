@@ -12,7 +12,7 @@ import { InstagramIcon, PinIcon, WhatsAppIcon } from "@/components/ui/Icons";
 export const metadata = pageMeta({
   title: "Contact",
   description:
-    "Get in touch with Adeolagold Beauty Studio — studio address, opening hours, WhatsApp, email and a direct enquiry form.",
+    "Get in touch with Adeolagold Beauty Studio at 598 Holly Lane, Goodmayes IG3 9BF — opening hours, WhatsApp, email and a direct enquiry form.",
   path: "/contact",
 });
 
@@ -51,7 +51,7 @@ export default function ContactPage() {
             <ImageFrame ratio="4/5">
               <EditorialImage
                 seed="contact-studio"
-                alt="The entrance to Adeolagold Beauty Studio"
+                alt="The entrance to Adeolagold Beauty Studio on Holly Lane, Goodmayes"
                 tone="studio"
                 sizes="(min-width: 1024px) 32vw, 92vw"
               />
@@ -65,8 +65,19 @@ export default function ContactPage() {
                   <br />
                   {design.brand.address.locality}
                   <br />
+                  {design.brand.address.region}
+                  <br />
                   {design.brand.address.postalCode}
                 </address>
+                <a
+                  href={design.brand.address.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-underline mt-3 inline-flex items-center gap-2 text-[13px] text-gold"
+                >
+                  <PinIcon className="h-4 w-4" />
+                  Open in Google Maps
+                </a>
               </div>
 
               <div>

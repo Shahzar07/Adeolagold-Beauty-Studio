@@ -142,7 +142,7 @@ export function ProductCard({
             <button
               type="button"
               onClick={quickAdd}
-              className="h-11 w-full bg-white/95 text-[11px] font-medium uppercase tracking-[0.12em] text-ink backdrop-blur-sm transition-colors duration-[350ms] ease-lux hover:bg-ink hover:text-white"
+              className="h-11 w-full bg-white/95 text-[11px] font-medium uppercase tracking-[0.12em] text-black backdrop-blur-sm transition-colors duration-[350ms] ease-lux hover:bg-ink hover:text-white"
             >
               Quick add
             </button>

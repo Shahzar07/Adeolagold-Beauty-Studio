@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export function CampaignBanner() {
   return (
     <section className="relative" aria-labelledby="campaign-heading">
-      <div className="relative min-h-[560px] overflow-hidden bg-ink lg:min-h-[76svh]">
+      <div className="relative min-h-[560px] overflow-hidden bg-black lg:min-h-[76svh]">
         <div className="grain absolute inset-0">
           <EditorialImage
             seed="campaign-signature"

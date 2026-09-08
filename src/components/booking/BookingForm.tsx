@@ -292,8 +292,8 @@ export function BookingForm({ initialService }: { initialService?: string }) {
                     className={cx(
                       "flex h-[76px] flex-col items-center justify-center gap-0.5 border transition-colors duration-[180ms]",
                       selected
-                        ? "border-ink bg-ink text-white"
-                        : "border-line text-ink hover:border-ink",
+                        ? "border-gold bg-gold text-black"
+                        : "border-line text-ink hover:border-gold",
                     )}
                   >
                     <span className="text-[10px] uppercase tracking-[0.14em] opacity-70">
@@ -346,8 +346,8 @@ export function BookingForm({ initialService }: { initialService?: string }) {
                         taken
                           ? "cursor-not-allowed border-line text-muted/50 line-through"
                           : selected
-                            ? "border-ink bg-ink text-white"
-                            : "border-line text-ink hover:border-ink",
+                            ? "border-gold bg-gold text-black"
+                            : "border-line text-ink hover:border-gold",
                       )}
                     >
                       {slot}
@@ -432,7 +432,7 @@ export function BookingForm({ initialService }: { initialService?: string }) {
                     aria-hidden="true"
                     className={cx(
                       "mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center border transition-colors duration-[180ms]",
-                      details.consent ? "border-ink bg-ink text-white" : "border-line",
+                      details.consent ? "border-gold bg-gold text-black" : "border-line",
                       errors.consent && !details.consent && "border-error",
                     )}
                   >

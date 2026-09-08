@@ -88,7 +88,7 @@ export function ProductGallery({
               <span
                 className={cx(
                   "h-px w-full transition-[background-color,height] duration-[350ms] ease-lux",
-                  index === active ? "h-[2px] bg-ink" : "bg-line",
+                  index === active ? "h-[2px] bg-gold" : "bg-line",
                 )}
               />
             </button>
@@ -109,7 +109,7 @@ export function ProductGallery({
               className={cx(
                 "relative block overflow-hidden rounded-subtle border transition-[border-color,opacity] duration-[350ms] ease-lux",
                 index === active
-                  ? "border-ink opacity-100"
+                  ? "border-gold opacity-100"
                   : "border-transparent opacity-65 hover:opacity-100",
               )}
             >

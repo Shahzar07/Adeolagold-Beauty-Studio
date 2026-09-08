@@ -123,8 +123,8 @@ export function FilterDrawer({
                       className={cx(
                         "flex h-11 min-w-[62px] cursor-pointer items-center justify-center border px-3 text-[12.5px] transition-colors duration-[180ms]",
                         checked
-                          ? "border-ink bg-ink text-white"
-                          : "border-line text-ink-soft hover:border-ink hover:text-ink",
+                          ? "border-gold bg-gold text-black"
+                          : "border-line text-ink-soft hover:border-gold hover:text-ink",
                       )}
                     >
                       <input
@@ -153,7 +153,7 @@ export function FilterDrawer({
                       aria-hidden="true"
                       className={cx(
                         "flex h-4 w-4 shrink-0 items-center justify-center border transition-colors duration-[180ms]",
-                        checked ? "border-ink bg-ink text-white" : "border-line",
+                        checked ? "border-gold bg-gold text-black" : "border-line",
                       )}
                     >
                       {checked ? <CheckIcon className="h-2.5 w-2.5" /> : null}

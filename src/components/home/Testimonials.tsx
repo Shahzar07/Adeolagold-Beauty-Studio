@@ -75,7 +75,7 @@ export function Testimonials() {
                 <span
                   className={cx(
                     "h-px w-full transition-[background-color,height] duration-[350ms] ease-lux",
-                    i === index ? "h-[2px] bg-ink" : "bg-line",
+                    i === index ? "h-[2px] bg-gold" : "bg-line",
                   )}
                 />
               </button>

@@ -12,16 +12,22 @@ export const design = {
     positioning: "Luxury Hair & Beauty",
     tagline: "The Art of Beautiful Hair",
     promise: "Beautiful hair. Exceptional quality. Luxury finishes.",
-    instagram: "@adeolagold",
-    instagramUrl: "https://instagram.com/adeolagold",
-    email: "studio@adeolagold.com",
-    phone: "+44 20 7946 0321",
+    instagram: "@adeolagoldbeautystudio",
+    instagramUrl: "https://www.instagram.com/adeolagoldbeautystudio",
+    tiktokUrl: "https://www.tiktok.com/@adeolagoldbeautystudio",
+    facebookUrl: "https://www.facebook.com/AdeolagoldBeautiesStudio",
+    email: "hello@adeolagoldbeautystudio.info",
+    phone: "+44 7376 936 291",
     address: {
-      street: "18 Wellbourne Mews",
-      locality: "London",
-      region: "Greater London",
-      postalCode: "SE15 4QP",
+      street: "598 Holly Lane",
+      locality: "Goodmayes",
+      region: "Ilford, Essex",
+      postalCode: "IG3 9BF",
       country: "GB",
+      /** Single-line form for meta descriptions, alt text and share cards. */
+      oneLine: "598 Holly Lane, Goodmayes, IG3 9BF",
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=598+Holly+Lane+Goodmayes+IG3+9BF",
     },
     hours: [
       { days: "Tuesday — Friday", time: "09:00 — 19:00" },
@@ -30,25 +36,29 @@ export const design = {
     ],
   },
 
+  // Black · Gold · White. Mirrored into CSS custom properties in globals.css.
   colors: {
-    background: "#F8F5F0",
-    surface: "#EFE9E1",
-    surfaceLight: "#FCFAF7",
+    /** Page ground and the two raised steps above it. */
+    background: "#0A0A0A",
+    surface: "#121212",
+    surfaceLight: "#191919",
 
-    ink: "#241C18",
-    inkSoft: "#6E5A4D",
+    /** Foreground. `ink` inverts to a white block when used as a background. */
+    ink: "#FAF8F3",
+    inkSoft: "#C8C2B6",
 
-    gold: "#B89B65",
-    goldLight: "#D8C59D",
+    gold: "#C9A84C",
+    goldLight: "#E8C97A",
+    goldDark: "#9A7A30",
 
     white: "#FFFFFF",
-    black: "#171412",
+    black: "#000000",
 
-    border: "#DED5CB",
-    muted: "#8D8178",
+    border: "#2A2724",
+    muted: "#8F8A80",
 
-    success: "#526B55",
-    error: "#9B4D45",
+    success: "#7FAE86",
+    error: "#E0796D",
   },
 
   typography: {
@@ -102,8 +112,8 @@ export const design = {
   },
 
   shadows: {
-    subtle: "0 8px 30px rgba(36, 28, 24, 0.06)",
-    elevated: "0 20px 60px rgba(36, 28, 24, 0.10)",
+    subtle: "0 8px 30px rgba(0, 0, 0, 0.45)",
+    elevated: "0 24px 70px rgba(0, 0, 0, 0.60)",
   },
 
   transitions: {
@@ -145,33 +155,33 @@ export const design = {
 
   buttons: {
     primary: {
-      background: "#241C18",
-      color: "#FFFFFF",
-      hoverBackground: "#B89B65",
-      hoverColor: "#FFFFFF",
+      background: "#C9A84C",
+      color: "#0A0A0A",
+      hoverBackground: "#E8C97A",
+      hoverColor: "#0A0A0A",
       height: "52px",
       paddingX: "28px",
     },
     secondary: {
       background: "transparent",
-      color: "#241C18",
-      border: "1px solid #241C18",
-      hoverBackground: "#241C18",
-      hoverColor: "#FFFFFF",
+      color: "#FAF8F3",
+      border: "1px solid #FAF8F3",
+      hoverBackground: "#FAF8F3",
+      hoverColor: "#0A0A0A",
       height: "52px",
       paddingX: "28px",
     },
     gold: {
-      background: "#B89B65",
-      color: "#FFFFFF",
-      hoverBackground: "#241C18",
-      hoverColor: "#FFFFFF",
+      background: "#C9A84C",
+      color: "#0A0A0A",
+      hoverBackground: "#FAF8F3",
+      hoverColor: "#0A0A0A",
       height: "52px",
       paddingX: "28px",
     },
     text: {
       background: "transparent",
-      color: "#241C18",
+      color: "#FAF8F3",
       underline: true,
       underlineOffset: "6px",
     },
@@ -212,7 +222,7 @@ export const design = {
   ],
 
   accessibility: {
-    focusRing: "2px solid #B89B65",
+    focusRing: "2px solid #C9A84C",
     focusOffset: "3px",
     minTouchTarget: "44px",
     reducedMotion: true,
@@ -221,8 +231,8 @@ export const design = {
   seo: {
     title: "Adeolagold Beauty Studio | Luxury Wigs, Human Hair & Beauty Services",
     description:
-      "Discover premium human hair, luxury wigs and professional beauty services at Adeolagold Beauty Studio. Shop premium hair or book your next appointment.",
-    url: "https://www.adeolagold.com",
+      "Discover premium human hair, luxury wigs and professional beauty services at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF. Shop premium hair or book your next appointment.",
+    url: "https://adeolagoldbeautystudio.co.uk",
   },
 } as const;
 

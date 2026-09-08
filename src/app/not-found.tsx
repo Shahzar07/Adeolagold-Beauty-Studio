@@ -3,7 +3,7 @@ import { EditorialImage } from "@/components/media/EditorialImage";
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-[70svh] items-center overflow-hidden bg-ink">
+    <div className="relative flex min-h-[70svh] items-center overflow-hidden bg-black">
       <div className="grain absolute inset-0 opacity-70">
         <EditorialImage seed="not-found" alt="" tone="campaign" sizes="100vw" />
       </div>

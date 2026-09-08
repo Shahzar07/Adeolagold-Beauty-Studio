@@ -72,7 +72,7 @@ export default async function ProductPage({
       </div>
 
       {/* Styling service cross-sell */}
-      <section className="relative overflow-hidden bg-ink" aria-labelledby="pdp-service-heading">
+      <section className="relative overflow-hidden bg-black" aria-labelledby="pdp-service-heading">
         <div className="grain absolute inset-0 opacity-80">
           <EditorialImage seed={`pdp-${product.slug}`} alt="" tone="campaign" sizes="100vw" />
         </div>

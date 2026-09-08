@@ -1,6 +1,7 @@
 import { EditorialImage } from "@/components/media/EditorialImage";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRightIcon } from "@/components/ui/Icons";
+import { ArrowRightIcon, PinIcon } from "@/components/ui/Icons";
+import { design } from "@/lib/design";
 
 /**
  * Editorial hero — asymmetric split on desktop (type left, full-bleed image
@@ -45,6 +46,17 @@ export function Hero() {
               </ButtonLink>
             </div>
 
+            <a
+              href={design.brand.address.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="animate-fade-up group mt-7 inline-flex items-center gap-2.5 text-[12px] text-ink-soft transition-colors duration-[180ms] hover:text-gold"
+              style={{ animationDelay: "280ms" }}
+            >
+              <PinIcon className="h-4 w-4 shrink-0 text-gold" />
+              <span className="link-underline">{design.brand.address.oneLine}</span>
+            </a>
+
             <dl
               className="animate-fade-up mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-7"
               style={{ animationDelay: "320ms" }}
@@ -76,21 +88,28 @@ export function Hero() {
             <div className="grain absolute inset-0">
               <EditorialImage
                 seed="hero-campaign-primary"
-                alt="Close-up editorial portrait of a client wearing a hand-finished Adeolagold wig"
+                src="/images/hero-portrait.jpg"
+                alt="Editorial studio portrait of a client wearing a hand-finished Adeolagold unit"
                 tone="portrait"
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 priority
               />
             </div>
 
+            {/* Scrim so the corner caption stays legible over the photograph. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+            />
+
             {/* Corner caption — the only type over the image. */}
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 lg:bottom-8 lg:left-8 lg:right-8">
-              <p className="max-w-[24ch] text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-white/80">
-                Autumn Campaign — Signature HD Frontal
+              <p className="max-w-[26ch] text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-white/85">
+                The Studio — {design.brand.address.oneLine}
               </p>
               <a
                 href="#the-edit"
-                className="group hidden shrink-0 items-center gap-2 text-[10.5px] font-medium uppercase tracking-[0.16em] text-white/80 transition-colors hover:text-white sm:inline-flex"
+                className="group inline-flex shrink-0 items-center gap-2 text-[10.5px] font-medium uppercase tracking-[0.16em] text-white/80 transition-colors hover:text-white max-sm:hidden"
               >
                 Discover
                 <ArrowRightIcon className="h-3.5 w-3.5 rotate-90 transition-transform duration-[350ms] ease-lux group-hover:translate-y-1" />

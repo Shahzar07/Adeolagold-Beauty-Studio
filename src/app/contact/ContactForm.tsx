@@ -102,8 +102,8 @@ export function ContactForm() {
               className={cx(
                 "flex h-11 cursor-pointer items-center border px-4 text-[12.5px] transition-colors duration-[180ms]",
                 values.topic === topic
-                  ? "border-ink bg-ink text-white"
-                  : "border-line text-ink-soft hover:border-ink hover:text-ink",
+                  ? "border-gold bg-gold text-black"
+                  : "border-line text-ink-soft hover:border-gold hover:text-ink",
               )}
             >
               <input

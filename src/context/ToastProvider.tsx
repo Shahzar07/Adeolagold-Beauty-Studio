@@ -62,7 +62,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           <div
             key={toast.id}
             role="status"
-            className="animate-toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-subtle border border-line bg-white px-4 py-3.5 shadow-elevated"
+            className="animate-toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-subtle border border-line bg-shite px-4 py-3.5 shadow-elevated"
           >
             <span
               aria-hidden="true"

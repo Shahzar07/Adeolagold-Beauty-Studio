@@ -16,7 +16,7 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           gap: 10,
-          background: design.colors.ink,
+          background: design.colors.background,
           color: design.colors.goldLight,
         }}
       >

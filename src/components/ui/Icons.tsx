@@ -123,6 +123,37 @@ export const LockIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const BankIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3.2 9.4L12 4.6l8.8 4.8" />
+    <path d="M4.9 9.9v8.2M9.6 9.9v8.2M14.4 9.9v8.2M19.1 9.9v8.2" />
+    <path d="M2.8 19.4h18.4" />
+  </Icon>
+);
+
+export const CopyIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="9" y="9" width="11" height="11" rx="1.4" />
+    <path d="M15.6 6.2A1.4 1.4 0 0014.2 4.8H5.4A1.4 1.4 0 004 6.2V15a1.4 1.4 0 001.4 1.4" />
+  </Icon>
+);
+
+export const UploadIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 16.2V4.4" />
+    <path d="M7.9 8.5L12 4.4l4.1 4.1" />
+    <path d="M3.9 15.2v3a1.4 1.4 0 001.4 1.4h13.4a1.4 1.4 0 001.4-1.4v-3" />
+  </Icon>
+);
+
+export const ImageIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="3.6" y="5.2" width="16.8" height="13.6" rx="1.4" />
+    <circle cx="9" cy="10" r="1.5" />
+    <path d="M4.4 16.6l4.3-4 3.1 2.9 2.9-2.6 4.7 4.2" />
+  </Icon>
+);
+
 export const TruckIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M2.8 6.6h11v9.2h-11z" />

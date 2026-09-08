@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { design } from "./design";
 
-export const SITE_URL = design.seo.url;
+/** Canonical origin. Override per environment with NEXT_PUBLIC_SITE_URL. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || design.seo.url;
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, SITE_URL).toString();

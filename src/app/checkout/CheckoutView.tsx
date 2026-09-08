@@ -8,6 +8,16 @@ import { Button, ButtonLink } from "@/components/ui/Button";
 import { EditorialImage, ImageFrame } from "@/components/media/EditorialImage";
 import { CheckIcon, ChevronDownIcon, LockIcon } from "@/components/ui/Icons";
 import { useToast } from "@/context/ToastProvider";
+import { BankTransferPanel, type ProofFile } from "@/components/commerce/BankTransferPanel";
+import {
+  BANK_TRANSFER_ID,
+  businessAccount,
+  isPayPalConnected,
+  isStripeConnected,
+  merchants,
+  orderReference,
+  paymentReference,
+} from "@/lib/payments";
 
 const shippingMethods = [
   { id: "standard", label: "Standard delivery", detail: "2–3 working days", price: 495 },
@@ -15,10 +25,24 @@ const shippingMethods = [
   { id: "collection", label: "Studio collection", detail: "Tue–Sat, by arrangement", price: 0 },
 ];
 
+/* Card and wallet methods only appear once their merchant account is connected
+   (see src/lib/payments.ts and the Payments section of the README). Bank
+   transfer needs no merchant, so it is always offered. */
 const paymentMethods = [
-  { id: "card", label: "Card", detail: "Visa, Mastercard, American Express" },
-  { id: "paypal", label: "PayPal", detail: "You will be redirected to complete payment" },
-  { id: "klarna", label: "Klarna", detail: "Pay in 3 interest-free instalments" },
+  ...(isStripeConnected()
+    ? [
+        { id: "card", label: merchants.stripe.label, detail: merchants.stripe.detail },
+        { id: "klarna", label: merchants.klarna.label, detail: merchants.klarna.detail },
+      ]
+    : []),
+  ...(isPayPalConnected()
+    ? [{ id: "paypal", label: merchants.paypal.label, detail: merchants.paypal.detail }]
+    : []),
+  {
+    id: BANK_TRANSFER_ID,
+    label: "Bank transfer",
+    detail: `Pay directly to ${businessAccount.bank} — details shown below`,
+  },
 ];
 
 const DISCOUNTS: Record<string, number> = { WELCOME10: 0.1, STUDIO15: 0.15 };
@@ -57,6 +81,12 @@ export function CheckoutView() {
   const [summaryOpen, setSummaryOpen] = useState(false);
   const [placing, setPlacing] = useState(false);
   const [orderRef, setOrderRef] = useState("");
+  const [proof, setProof] = useState<ProofFile | null>(null);
+  const [placedByTransfer, setPlacedByTransfer] = useState(false);
+  const [proofName, setProofName] = useState("");
+  const [placedTotal, setPlacedTotal] = useState(0);
+
+
 
   const discountRate = applied ? DISCOUNTS[applied] : 0;
   const discount = Math.round(subtotal * discountRate);
@@ -68,6 +98,14 @@ export function CheckoutView() {
     return method.price;
   }, [shipping, freeShipping]);
   const total = Math.max(0, subtotal - discount) + shippingCost;
+
+  /* The reference the client quotes on their transfer, which becomes the order
+     reference once the order is placed. Derived from the basket so it is stable
+     across renders and identical on the server and the client. */
+  const draftRef = useMemo(
+    () => orderReference(...lines.map((l) => `${l.key}x${l.quantity}`), subtotal),
+    [lines, subtotal],
+  );
 
   const validate = () => {
     const next: Partial<Record<keyof Fields, string>> = {};
@@ -89,12 +127,24 @@ export function CheckoutView() {
       return;
     }
     setPlacing(true);
-    // Wire this to your payment provider (Shopify Checkout, Stripe, …).
+    /* Hand off to the merchant here — Stripe PaymentIntent, PayPal order, or a
+       POST of the basket plus `proof.file` for a bank transfer. */
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setOrderRef(`AG${Date.now().toString().slice(-7)}`);
+    const ref = draftRef;
+    setOrderRef(ref);
+    setPlacedByTransfer(payment === BANK_TRANSFER_ID);
+    setProofName(proof?.file.name ?? "");
+    setPlacedTotal(total);
     clear();
     setPlacing(false);
-    push({ title: "Order placed", description: "A confirmation is on its way.", tone: "success" });
+    push({
+      title: payment === BANK_TRANSFER_ID ? "Order received" : "Order placed",
+      description:
+        payment === BANK_TRANSFER_ID
+          ? "We will release it as soon as your transfer clears."
+          : "A confirmation is on its way.",
+      tone: "success",
+    });
   };
 
   /* Confirmation ---------------------------------------------------- */
@@ -111,8 +161,19 @@ export function CheckoutView() {
           className="animate-fade-up mt-5 text-[16px] leading-relaxed text-ink-soft"
           style={{ animationDelay: "200ms" }}
         >
-          Your order is confirmed. Everything is hand-checked before it leaves the studio.
+          {placedByTransfer
+            ? `Your order is reserved. Send ${formatPrice(placedTotal)} to ${businessAccount.accountNumber} · ${businessAccount.sortCode} quoting ${paymentReference(fields.lastName, orderRef)}, and we will release it the moment it lands.`
+            : "Your order is confirmed. Everything is hand-checked before it leaves the studio."}
         </p>
+        {placedByTransfer && proofName ? (
+          <p
+            className="animate-fade-up mt-4 flex items-center justify-center gap-2 text-[13px] text-gold"
+            style={{ animationDelay: "230ms" }}
+          >
+            <CheckIcon className="h-4 w-4" />
+            Screenshot received — {proofName}
+          </p>
+        ) : null}
         <p
           className="animate-fade-up mt-8 text-[12px] uppercase tracking-[0.16em] text-muted"
           style={{ animationDelay: "260ms" }}
@@ -170,7 +231,7 @@ export function CheckoutView() {
                   sizes="64px"
                 />
               </ImageFrame>
-              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-ink px-1 text-[10px] tabular-nums text-white">
+              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[10px] tabular-nums text-black">
                 {line.quantity}
               </span>
             </div>
@@ -384,7 +445,7 @@ export function CheckoutView() {
                   key={method.id}
                   className={cx(
                     "flex cursor-pointer items-center gap-4 border px-5 py-4 transition-colors duration-[180ms]",
-                    shipping === method.id ? "border-ink" : "border-line hover:border-ink-soft",
+                    shipping === method.id ? "border-gold" : "border-line hover:border-ink-soft",
                   )}
                 >
                   <input
@@ -398,11 +459,11 @@ export function CheckoutView() {
                     aria-hidden="true"
                     className={cx(
                       "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors",
-                      shipping === method.id ? "border-ink" : "border-line",
+                      shipping === method.id ? "border-gold" : "border-line",
                     )}
                   >
                     {shipping === method.id ? (
-                      <span className="h-2 w-2 rounded-full bg-ink" />
+                      <span className="h-2 w-2 rounded-full bg-gold" />
                     ) : null}
                   </span>
                   <span className="flex-1">
@@ -424,46 +485,60 @@ export function CheckoutView() {
           </h2>
           <p className="mb-6 flex items-center gap-2 text-[12.5px] text-muted">
             <LockIcon className="h-4 w-4 text-gold" />
-            All transactions are secure and encrypted.
+            All transactions are secure and encrypted. Card details never touch our servers.
           </p>
           <div className="flex flex-col gap-2">
             {paymentMethods.map((method) => (
-              <label
-                key={method.id}
-                className={cx(
-                  "flex cursor-pointer items-center gap-4 border px-5 py-4 transition-colors duration-[180ms]",
-                  payment === method.id ? "border-ink" : "border-line hover:border-ink-soft",
-                )}
-              >
-                <input
-                  type="radio"
-                  name="payment"
-                  className="sr-only"
-                  checked={payment === method.id}
-                  onChange={() => setPayment(method.id)}
-                />
-                <span
-                  aria-hidden="true"
+              <div key={method.id}>
+                <label
                   className={cx(
-                    "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors",
-                    payment === method.id ? "border-ink" : "border-line",
+                    "flex cursor-pointer items-center gap-4 border px-5 py-4 transition-colors duration-[180ms]",
+                    payment === method.id ? "border-gold" : "border-line hover:border-ink-soft",
                   )}
                 >
-                  {payment === method.id ? (
-                    <span className="h-2 w-2 rounded-full bg-ink" />
-                  ) : null}
-                </span>
-                <span className="flex-1">
-                  <span className="block text-[13.5px] text-ink">{method.label}</span>
-                  <span className="block text-[12px] text-muted">{method.detail}</span>
-                </span>
-              </label>
+                  <input
+                    type="radio"
+                    name="payment"
+                    className="sr-only"
+                    checked={payment === method.id}
+                    onChange={() => setPayment(method.id)}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={cx(
+                      "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors",
+                      payment === method.id ? "border-gold" : "border-line",
+                    )}
+                  >
+                    {payment === method.id ? (
+                      <span className="h-2 w-2 rounded-full bg-gold" />
+                    ) : null}
+                  </span>
+                  <span className="flex-1">
+                    <span className="block text-[13.5px] text-ink">{method.label}</span>
+                    <span className="block text-[12px] text-muted">{method.detail}</span>
+                  </span>
+                </label>
+
+                {method.id === BANK_TRANSFER_ID && payment === BANK_TRANSFER_ID ? (
+                  <BankTransferPanel
+                    total={total}
+                    reference={paymentReference(fields.lastName, draftRef)}
+                    proof={proof}
+                    onProofChange={setProof}
+                  />
+                ) : null}
+              </div>
             ))}
           </div>
         </section>
 
         <Button type="submit" disabled={placing} fullWidth size="lg" className="mt-10">
-          {placing ? "Placing order…" : `Pay ${formatPrice(total)}`}
+          {placing
+            ? "Placing order…"
+            : payment === BANK_TRANSFER_ID
+              ? `Confirm order · ${formatPrice(total)} by transfer`
+              : `Pay ${formatPrice(total)}`}
         </Button>
 
         <p className="mt-5 text-center text-[11.5px] leading-relaxed text-muted">

@@ -21,11 +21,11 @@ export function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="relative z-50 bg-ink text-white">
+    <div className="relative z-50 bg-gold text-black">
       <div className="container-wide flex h-[38px] items-center justify-center overflow-hidden">
         <p
           key={index}
-          className="animate-fade-in text-center text-[10.5px] font-medium uppercase tracking-[0.16em] text-white/85"
+          className="animate-fade-in text-center text-[10.5px] font-medium uppercase tracking-[0.16em] text-black/80"
         >
           {messages[index]}
         </p>

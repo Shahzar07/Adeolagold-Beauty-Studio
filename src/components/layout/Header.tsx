@@ -53,7 +53,7 @@ export function Header() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-5 focus:py-3 focus:text-[12px] focus:uppercase focus:tracking-[0.12em] focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-gold focus:px-5 focus:py-3 focus:text-[12px] focus:uppercase focus:tracking-[0.12em] focus:text-black"
       >
         Skip to content
       </a>
@@ -149,7 +149,7 @@ export function Header() {
               {hydrated && count > 0 ? (
                 <span
                   className={cx(
-                    "absolute right-1 top-1.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-gold px-1 text-[9.5px] font-medium tabular-nums text-white",
+                    "absolute right-1 top-1.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-gold px-1 text-[9.5px] font-medium tabular-nums text-black",
                     pulse && "animate-bag-pulse",
                   )}
                 >
@@ -161,7 +161,7 @@ export function Header() {
             <ButtonLink
               href="/book"
               size="sm"
-              className="ml-3 hidden h-10 px-5 text-[10px] xl:inline-flex"
+              className="ml-3 h-10 px-5 text-[10px] max-xl:hidden"
             >
               Book Appointment
             </ButtonLink>
