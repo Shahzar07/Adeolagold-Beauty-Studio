@@ -18,7 +18,7 @@ export function BrandStatement() {
               create beauty experiences designed to last.
             </p>
             <p className="mt-6 text-[14.5px] leading-relaxed text-muted">
-              We work with single donors, cut on the client rather than the block, and finish every
+              We work with raw and virgin hair, cut on the client rather than the block, and finish every
               hairline by hand. It takes longer. It is the only way we know how to do it.
             </p>
           </Reveal>

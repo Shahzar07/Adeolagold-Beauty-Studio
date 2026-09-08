@@ -37,7 +37,7 @@ export default function ContactPage() {
           <Reveal delay={100} className="lg:col-span-5 lg:col-start-8">
             <p className="body-lg max-w-lg">
               Questions about a unit, an order or an appointment — or you want something sourced
-              that is not on the site. We answer everything within one working day.
+              that is not on the site. We answer everything within 24 hours.
             </p>
           </Reveal>
         </header>
@@ -51,7 +51,7 @@ export default function ContactPage() {
             <ImageFrame ratio="4/5">
               <EditorialImage
                 seed="contact-studio"
-                alt="The entrance to Adeolagold Beauty Studio on Holly Lane, Goodmayes"
+                alt="Close-up beauty portrait with a finished makeup look"
                 tone="studio"
                 sizes="(min-width: 1024px) 32vw, 92vw"
               />
@@ -61,16 +61,14 @@ export default function ContactPage() {
               <div>
                 <p className="eyebrow mb-3">The studio</p>
                 <address className="not-italic text-[14px] leading-relaxed text-ink-soft">
-                  {design.brand.address.street}
-                  <br />
-                  {design.brand.address.locality}
-                  <br />
-                  {design.brand.address.region}
-                  <br />
-                  {design.brand.address.postalCode}
+                  {design.brand.location.displayLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </address>
                 <a
-                  href={design.brand.address.mapsUrl}
+                  href={design.brand.location.mapsUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="link-underline mt-3 inline-flex items-center gap-2 text-[13px] text-gold"
@@ -78,6 +76,9 @@ export default function ContactPage() {
                   <PinIcon className="h-4 w-4" />
                   Open in Google Maps
                 </a>
+                <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                  {design.brand.location.note}
+                </p>
               </div>
 
               <div>
@@ -90,7 +91,7 @@ export default function ContactPage() {
                   </li>
                   <li>
                     <a
-                      href={`tel:${design.brand.phone.replace(/\s/g, "")}`}
+                      href={`tel:${design.brand.phoneE164}`}
                       className="link-underline"
                     >
                       {design.brand.phone}
@@ -116,16 +117,20 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-3">
                 <ButtonLink
-                  href={`https://wa.me/${design.brand.phone.replace(/[^0-9]/g, "")}`}
+                  href={`https://wa.me/${design.brand.phoneE164.replace(/[^0-9]/g, "")}`}
                   variant="secondary"
                   fullWidth
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp the studio
                 </ButtonLink>
-                <ButtonLink href={design.brand.instagramUrl} variant="ghost" fullWidth>
+                <ButtonLink
+                  href={design.brand.social.instagram.url}
+                  variant="ghost"
+                  fullWidth
+                >
                   <InstagramIcon className="h-4 w-4" />
-                  {design.brand.instagram}
+                  {design.brand.social.instagram.handle}
                 </ButtonLink>
                 <ButtonLink href="/book" fullWidth>
                   <PinIcon className="h-4 w-4" />

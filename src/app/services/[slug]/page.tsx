@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { getService, services } from "@/lib/services";
 import { pageMeta } from "@/lib/seo";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, formatServicePrice } from "@/lib/format";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   return pageMeta({
     title: service.title,
-    description: `${service.summary} From ${formatPrice(service.fromPrice)} · ${service.duration}. Book at Adeolagold Beauty Studio, London.`,
+    description: `${service.summary} ${service.duration}. Book at Adeolagold Beauty Studio, a private appointment-only studio in Dagenham, Essex.`,
     path: `/services/${service.slug}`,
   });
 }
@@ -79,9 +79,9 @@ export default async function ServicePage({
 
               <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-y border-line py-5 text-[13px]">
                 <div>
-                  <dt className="text-muted">From</dt>
+                  <dt className="text-muted">{service.fromPrice ? "From" : "Price"}</dt>
                   <dd className="mt-1 font-display text-[22px] leading-none tabular-nums">
-                    {formatPrice(service.fromPrice)}
+                    {service.fromPrice ? formatPrice(service.fromPrice) : "On consultation"}
                   </dd>
                 </div>
                 <div>
@@ -93,7 +93,9 @@ export default async function ServicePage({
                 <div>
                   <dt className="text-muted">Deposit</dt>
                   <dd className="mt-1.5 text-ink tabular-nums">
-                    {formatPrice(service.depositPence)}
+                    {service.depositPence
+                      ? formatPrice(service.depositPence)
+                      : "Confirmed on booking"}
                   </dd>
                 </div>
               </dl>
@@ -146,7 +148,7 @@ export default async function ServicePage({
                     {other.title}
                   </h3>
                   <p className="mt-1.5 text-[12px] tabular-nums text-muted">
-                    From {formatPrice(other.fromPrice)}
+                    {formatServicePrice(other.fromPrice)}
                   </p>
                 </Link>
               </li>

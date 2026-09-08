@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Service } from "@/lib/types";
-import { cx, formatPrice } from "@/lib/format";
+import { cx, formatServicePrice } from "@/lib/format";
 import { ButtonLink } from "@/components/ui/Button";
 import { ClockIcon, PlusIcon, MinusIcon, CheckIcon } from "@/components/ui/Icons";
 
@@ -44,7 +44,7 @@ export function ServiceRows({
 
               <div className="flex shrink-0 flex-col items-end gap-2 pt-1">
                 <span className="text-[13px] tabular-nums text-ink">
-                  From {formatPrice(service.fromPrice)}
+                  {formatServicePrice(service.fromPrice)}
                 </span>
                 <span className="flex items-center gap-1.5 text-[11px] text-muted">
                   <ClockIcon className="h-3.5 w-3.5" />

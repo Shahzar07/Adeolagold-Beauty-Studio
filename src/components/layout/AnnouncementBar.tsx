@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const messages = [
   "Complimentary UK delivery on orders over £150",
-  "Single-donor human hair — cuticle intact, always",
+  "Raw and virgin human hair — cuticle intact, always",
   "Studio appointments now open for next month",
 ];
 

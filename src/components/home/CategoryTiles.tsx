@@ -18,7 +18,7 @@ export function CategoryTiles() {
           className="mb-14"
         />
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {categoryTiles.map((tile, index) => (
             <Reveal key={tile.slug} as="article" delay={index * 90}>
               <Link href={tile.href} className="group block">

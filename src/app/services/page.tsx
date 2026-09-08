@@ -14,7 +14,7 @@ import { CheckIcon } from "@/components/ui/Icons";
 export const metadata = pageMeta({
   title: "Services",
   description:
-    "Wig installation, revamping, braiding, sew-ins, custom wig styling and consultations at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF. Prices, durations and what each service includes.",
+    "Luxury wig installation, wig revamps, frontal and closure installs, sew-ins, braiding, silk press, custom wig making, hair treatments, microblading and professional makeup at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF.",
   path: "/services",
 });
 
@@ -57,7 +57,7 @@ export default function ServicesPage() {
           <ImageFrame ratio="16/9" className="mb-16">
             <EditorialImage
               seed="services-hero"
-              alt="The Adeolagold studio during an appointment"
+              alt="Editorial portrait of a client wearing a long braided style"
               tone="studio"
               sizes="100vw"
               priority

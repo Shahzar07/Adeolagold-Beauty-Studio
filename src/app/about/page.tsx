@@ -22,26 +22,31 @@ const crumbs = [
   { label: "About", href: "/about" },
 ];
 
-const timeline = [
+/**
+ * The studio's own published account of how it works. Deliberately not a dated
+ * timeline: no founding dates or client counts are published anywhere, so none
+ * are invented here.
+ */
+const experience = [
   {
-    year: "2016",
-    title: "One chair",
-    copy: "Adeola begins taking clients from a single chair at home, building a waiting list entirely on referrals.",
+    number: "01",
+    title: "Private studio experience",
+    copy: "Every appointment is held at our studio on Holly Lane in Goodmayes, Essex — a calm, comfortable and professional space created entirely for you.",
   },
   {
-    year: "2019",
-    title: "The first studio",
-    copy: "A dedicated space opens on Holly Lane in Goodmayes. Bookings move to one client at a time — a decision that has never been reversed.",
+    number: "02",
+    title: "One-to-one, unhurried",
+    copy: "Each session is completely one-to-one. We are appointment-only, so every client has our full, undivided attention from start to finish.",
   },
   {
-    year: "2022",
-    title: "Sourcing directly",
-    copy: "After years of unreliable suppliers, we begin sourcing single-donor hair directly, inspecting every bundle before it is offered.",
+    number: "03",
+    title: "Exceptional human hair",
+    copy: "We specialise in sourcing raw and virgin human hair from trusted suppliers worldwide — a range of textures, lengths and custom options, selected for their natural beauty and longevity.",
   },
   {
-    year: "2024",
-    title: "The workshop",
-    copy: "Custom unit construction moves in-house. Caps, ventilation, cutting and colour all now happen under one roof.",
+    number: "04",
+    title: "UK-wide online orders",
+    copy: "Not local to Essex? Our premium human hair, custom wigs, frontals and closures ship nationwide, carefully packaged and dispatched promptly.",
   },
 ];
 
@@ -73,7 +78,7 @@ export default function AboutPage() {
         <div className="grain relative h-[46svh] min-h-[320px] overflow-hidden bg-surface lg:h-[64svh]">
           <EditorialImage
             seed="about-studio-wide"
-            alt="Inside the Adeolagold Beauty Studio"
+            alt="A client photographed with a full-length install"
             tone="studio"
             sizes="100vw"
             priority
@@ -87,34 +92,37 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5">
               <h2 id="about-narrative" className="display-3 max-w-[16ch]">
-                It started with a refusal to cut corners.
+                Every woman deserves to feel extraordinary.
               </h2>
             </Reveal>
 
             <Reveal delay={100} className="flex flex-col gap-5 lg:col-span-6 lg:col-start-7">
               <p className="text-[15.5px] leading-[1.78] text-ink-soft">
-                Adeola trained as a stylist and spent years watching good hair ruined by bad
-                process — units cut on a block instead of a head, hairlines plucked into a shape
-                that belonged to nobody, bundles sold as raw that fell apart in a month.
+                Adeolagold Beauty Studio was founded on a simple but powerful belief: every woman
+                deserves to walk away from a beauty appointment feeling absolutely extraordinary.
+                From the very first appointment, we set out to create an experience that combines
+                luxury, expertise and genuine warmth.
               </p>
               <p className="text-[15.5px] leading-[1.78] text-ink-soft">
-                Adeolagold was built as the opposite of that. Fewer clients, more time with each
-                one. Hair sourced from a single donor and inspected by hand. A cut made on the
-                person who will wear it. And honest answers — including when the honest answer is
-                that you should spend less than you planned.
+                We have had the privilege of working with hundreds of incredible women, building
+                not just beautiful looks but lasting relationships rooted in trust, consistency and
+                care. We specialise in sourcing raw and virgin human hair from trusted suppliers
+                around the world — curating a collection of exceptional textures, lengths and
+                custom options so every client leaves with hair that feels entirely their own.
               </p>
               <p className="text-[15.5px] leading-[1.78] text-ink-soft">
-                Nearly a decade later the studio has served over two thousand clients, and the
-                approach has not changed. It takes longer. It is the only way we know how to do it.
+                All appointments take place at our private, appointment-only studio in Essex — a
+                calm, professional and discreet space created entirely for you. Each session is
+                completely one-to-one, so your experience feels personal, luxurious and unhurried.
               </p>
 
               <blockquote className="mt-4 border-l border-gold pl-6">
                 <p className="font-display text-[clamp(1.35rem,2.4vw,1.85rem)] leading-[1.28] tracking-[-0.018em]">
-                  “Beautiful hair should feel as exceptional as it looks. Everything else follows
-                  from that.”
+                  “At Adeolagold, you are never just a client. You are a woman who deserves to be
+                  seen, heard and cared for.”
                 </p>
                 <footer className="mt-4 text-[11px] uppercase tracking-[0.16em] text-muted">
-                  Adeola — Founder
+                  Adeolagold Beauty Studio
                 </footer>
               </blockquote>
             </Reveal>
@@ -123,14 +131,14 @@ export default function AboutPage() {
       </section>
 
       {/* Founder portrait pair */}
-      <section className="section-sm" aria-label="The founder">
+      <section className="section-sm" aria-label="In the studio">
         <div className="container-page">
           <div className="grid gap-6 md:grid-cols-12">
             <Reveal className="md:col-span-7">
               <ImageFrame ratio="4/5">
                 <EditorialImage
                   seed="about-founder-portrait"
-                  alt="Adeola, founder of Adeolagold Beauty Studio"
+                  alt="Editorial portrait of a client wearing a braided style"
                   tone="portrait"
                   sizes="(min-width: 768px) 56vw, 100vw"
                 />
@@ -140,38 +148,38 @@ export default function AboutPage() {
               <ImageFrame ratio="1/1">
                 <EditorialImage
                   seed="about-hands"
-                  alt="Hands ventilating a hairline in the workshop"
+                  alt="Close-up of hands working through hair"
                   tone="detail"
                   sizes="(min-width: 768px) 30vw, 100vw"
                 />
               </ImageFrame>
               <p className="text-[13.5px] leading-relaxed text-muted">
-                Every unit that leaves the workshop has been through Adeola&rsquo;s hands at least
-                twice — once at the cap, once at the cut.
+                Every unit is checked by hand before it leaves the studio — once at the cap,
+                once at the cut.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section border-y border-line" aria-labelledby="timeline-heading">
+      {/* The experience */}
+      <section className="section border-y border-line" aria-labelledby="experience-heading">
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-4">
-              <p className="eyebrow mb-5">The road here</p>
-              <h2 id="timeline-heading" className="display-2 max-w-[10ch]">
-                Eight years, one standard.
+              <p className="eyebrow mb-5">What to expect</p>
+              <h2 id="experience-heading" className="display-2 max-w-[10ch]">
+                One client at a time.
               </h2>
             </Reveal>
 
             <div className="lg:col-span-7 lg:col-start-6">
               <ol className="border-t border-line">
-                {timeline.map((entry, index) => (
-                  <Reveal key={entry.year} as="li" delay={index * 80}>
+                {experience.map((entry, index) => (
+                  <Reveal key={entry.number} as="li" delay={index * 80}>
                     <div className="grid gap-3 border-b border-line py-7 sm:grid-cols-[90px_1fr] sm:gap-8">
                       <p className="font-display text-[20px] leading-none text-gold">
-                        {entry.year}
+                        {entry.number}
                       </p>
                       <div>
                         <h3 className="font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-ink">
@@ -239,22 +247,23 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={100} className="lg:col-span-3">
             <address className="not-italic text-[14.5px] leading-relaxed text-ink-soft">
-              {design.brand.address.street}
-              <br />
-              {design.brand.address.locality}
-              <br />
-              {design.brand.address.region}
-              <br />
-              {design.brand.address.postalCode}
+              {design.brand.location.displayLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </address>
             <a
-              href={design.brand.address.mapsUrl}
+              href={design.brand.location.mapsUrl}
               target="_blank"
               rel="noreferrer"
               className="link-underline mt-3 inline-block text-[13px] text-gold"
             >
               Get directions
             </a>
+            <p className="mt-3 text-[13px] leading-relaxed text-muted">
+              {design.brand.location.note}
+            </p>
           </Reveal>
           <Reveal delay={160} className="lg:col-span-4 lg:col-start-9">
             <dl className="flex flex-col gap-2 text-[13.5px] text-ink-soft">

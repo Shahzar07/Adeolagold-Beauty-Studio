@@ -3,18 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { primaryNav } from "@/lib/navigation";
-import { design } from "@/lib/design";
 import { cx } from "@/lib/format";
 import { Drawer } from "@/components/ui/Drawer";
 import { ButtonLink } from "@/components/ui/Button";
-import {
-  AccountIcon,
-  ChevronDownIcon,
-  InstagramIcon,
-  SearchIcon,
-  TikTokIcon,
-  WhatsAppIcon,
-} from "@/components/ui/Icons";
+import { AccountIcon, ChevronDownIcon, SearchIcon } from "@/components/ui/Icons";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 export function MobileMenu({
   open,
@@ -47,29 +40,11 @@ export function MobileMenu({
             >
               <AccountIcon className="h-4 w-4" /> Account
             </Link>
-            <div className="flex items-center gap-1">
-              <a
-                href={design.brand.instagramUrl}
-                aria-label="Instagram"
-                className="flex h-11 w-11 items-center justify-center text-ink-soft transition-colors hover:text-gold"
-              >
-                <InstagramIcon className="h-[17px] w-[17px]" />
-              </a>
-              <a
-                href="https://tiktok.com/@adeolagold"
-                aria-label="TikTok"
-                className="flex h-11 w-11 items-center justify-center text-ink-soft transition-colors hover:text-gold"
-              >
-                <TikTokIcon className="h-[17px] w-[17px]" />
-              </a>
-              <a
-                href={`https://wa.me/${design.brand.phone.replace(/[^0-9]/g, "")}`}
-                aria-label="WhatsApp"
-                className="-mr-2.5 flex h-11 w-11 items-center justify-center text-ink-soft transition-colors hover:text-gold"
-              >
-                <WhatsAppIcon className="h-[17px] w-[17px]" />
-              </a>
-            </div>
+            <SocialLinks
+              className="-mr-2.5"
+              linkClassName="text-ink-soft hover:text-gold"
+              iconClassName="h-[17px] w-[17px]"
+            />
           </div>
         </div>
       }

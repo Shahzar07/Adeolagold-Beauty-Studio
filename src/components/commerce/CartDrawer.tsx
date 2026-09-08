@@ -19,7 +19,7 @@ export function CartDrawer() {
   // "You may also love" — small, high-attach items not already in the bag.
   const inBag = new Set(lines.map((l) => l.productId));
   const upsells = products
-    .filter((p) => p.category === "products" && !inBag.has(p.id) && p.inStock)
+    .filter((p) => p.category === "frontals-closures" && !inBag.has(p.id) && p.inStock)
     .slice(0, 2);
 
   return (

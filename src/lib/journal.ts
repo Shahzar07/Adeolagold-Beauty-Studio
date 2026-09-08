@@ -9,7 +9,7 @@ export const journalPosts: JournalPost[] = [
       "A human hair wig is an investment that behaves like hair — which means it needs washing, conditioning and rest. Here is the routine we give every client.",
     readingTime: "6 min read",
     publishedAt: "2025-08-18",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-care",
     imageTone: "portrait",
     body: [
@@ -60,7 +60,7 @@ export const journalPosts: JournalPost[] = [
       "One gives you a natural parting and less maintenance. The other gives you a ponytail. The honest trade-offs, without the sales pitch.",
     readingTime: "5 min read",
     publishedAt: "2025-07-30",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-closure",
     imageTone: "detail",
     body: [
@@ -115,7 +115,7 @@ export const journalPosts: JournalPost[] = [
       "The difference between a unit that lasts four months and one that lasts two years comes down to about six habits.",
     readingTime: "4 min read",
     publishedAt: "2025-07-09",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-longevity",
     imageTone: "texture",
     body: [
@@ -153,7 +153,7 @@ export const journalPosts: JournalPost[] = [
       "What happens in the chair, how to prepare, how long it takes, and what a good install should feel like afterwards.",
     readingTime: "7 min read",
     publishedAt: "2025-06-15",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-install",
     imageTone: "studio",
     body: [
@@ -199,7 +199,7 @@ export const journalPosts: JournalPost[] = [
       "Before you replace a unit, try these. Most wigs that feel finished are three hours of work away from feeling new.",
     readingTime: "4 min read",
     publishedAt: "2025-05-27",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-refresh",
     imageTone: "campaign",
     body: [
@@ -246,7 +246,7 @@ export const journalPosts: JournalPost[] = [
       "150%, 180%, 200% — the number most people get wrong, and the one that decides whether a wig looks like hair.",
     readingTime: "5 min read",
     publishedAt: "2025-04-22",
-    author: "Adeola",
+    author: "Adeolagold Beauty Studio",
     imageSeed: "journal-density",
     imageTone: "portrait",
     body: [

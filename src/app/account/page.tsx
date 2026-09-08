@@ -66,7 +66,7 @@ export default function AccountPage() {
             <ImageFrame ratio="16/9">
               <EditorialImage
                 seed="account-studio"
-                alt="A client's units stored in the studio"
+                alt="Portrait of a client photographed in the studio"
                 tone="studio"
                 sizes="(min-width: 1024px) 48vw, 100vw"
               />

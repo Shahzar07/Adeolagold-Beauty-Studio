@@ -47,29 +47,31 @@ export function Hero() {
             </div>
 
             <a
-              href={design.brand.address.mapsUrl}
+              href={design.brand.location.mapsUrl}
               target="_blank"
               rel="noreferrer"
               className="animate-fade-up group mt-7 inline-flex items-center gap-2.5 text-[12px] text-ink-soft transition-colors duration-[180ms] hover:text-gold"
               style={{ animationDelay: "280ms" }}
             >
               <PinIcon className="h-4 w-4 shrink-0 text-gold" />
-              <span className="link-underline">{design.brand.address.oneLine}</span>
+              <span className="link-underline">{design.brand.location.oneLine}</span>
             </a>
 
             <dl
               className="animate-fade-up mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-7"
               style={{ animationDelay: "320ms" }}
             >
+              {/* Claims, not metrics — the studio publishes no client count or
+                  rating, so none are invented here. */}
               {[
-                { value: "Single", label: "Donor hair, always" },
-                { value: "2,400+", label: "Clients served" },
-                { value: "4.9", label: "Average rating" },
+                { value: "Raw & virgin", label: "Human hair, always" },
+                { value: "One at a time", label: "Private studio, by appointment" },
+                { value: "UK-wide", label: "Delivery on every order" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>
-                    <span className="block font-display text-[26px] leading-none">
+                    <span className="block font-display text-[22px] leading-tight">
                       {stat.value}
                     </span>
                     <span className="mt-2 block text-[11px] leading-snug text-muted">
@@ -88,8 +90,7 @@ export function Hero() {
             <div className="grain absolute inset-0">
               <EditorialImage
                 seed="hero-campaign-primary"
-                src="/images/hero-portrait.jpg"
-                alt="Editorial studio portrait of a client wearing a hand-finished Adeolagold unit"
+                alt="Editorial beauty portrait of a model with a full natural afro, photographed against a soft grey ground"
                 tone="portrait"
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 priority
@@ -105,7 +106,7 @@ export function Hero() {
             {/* Corner caption — the only type over the image. */}
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 lg:bottom-8 lg:left-8 lg:right-8">
               <p className="max-w-[26ch] text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-white/85">
-                The Studio — {design.brand.address.oneLine}
+                The Studio — {design.brand.location.oneLine}
               </p>
               <a
                 href="#the-edit"

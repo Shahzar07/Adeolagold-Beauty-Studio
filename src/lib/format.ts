@@ -9,6 +9,14 @@ export function formatPrice(pence: number): string {
   }).format(pounds);
 }
 
+/**
+ * Services are quoted at consultation, so a service price is optional. Renders
+ * the "From £x" line when a price exists and honest fallback copy when it does not.
+ */
+export function formatServicePrice(pence: number | undefined): string {
+  return pence === undefined ? "Quoted at consultation" : `From ${formatPrice(pence)}`;
+}
+
 export function formatDate(iso: string): string {
   return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { searchProducts } from "@/lib/catalog";
 import { services } from "@/lib/services";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, formatServicePrice } from "@/lib/format";
 import { EditorialImage, ImageFrame } from "@/components/media/EditorialImage";
 import { CloseIcon, SearchIcon } from "@/components/ui/Icons";
 
@@ -183,7 +183,7 @@ export function SearchDrawer({ open, onClose }: { open: boolean; onClose: () => 
                         >
                           <p className="text-[13.5px] font-medium text-ink">{service.title}</p>
                           <p className="text-[12px] text-muted">
-                            From {formatPrice(service.fromPrice)} · {service.duration}
+                            {formatServicePrice(service.fromPrice)} · {service.duration}
                           </p>
                         </Link>
                       </li>

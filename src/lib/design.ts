@@ -12,27 +12,62 @@ export const design = {
     positioning: "Luxury Hair & Beauty",
     tagline: "The Art of Beautiful Hair",
     promise: "Beautiful hair. Exceptional quality. Luxury finishes.",
-    instagram: "@adeolagoldbeautystudio",
-    instagramUrl: "https://www.instagram.com/adeolagoldbeautystudio",
-    tiktokUrl: "https://www.tiktok.com/@adeolagoldbeautystudio",
-    facebookUrl: "https://www.facebook.com/AdeolagoldBeautiesStudio",
+    intro:
+      "Luxury wig installations and premium human hair at our Goodmayes studio. Raw and virgin human hair sourced from trusted global suppliers. UK-wide online orders available.",
     email: "hello@adeolagoldbeautystudio.info",
+    /** E.164, used for tel: and wa.me links. */
+    phoneE164: "+447376936291",
+    /** Display form. */
     phone: "+44 7376 936 291",
-    address: {
+    social: {
+      instagram: {
+        handle: "@adeolagoldbeautystudio",
+        url: "https://www.instagram.com/adeolagoldbeautystudio",
+      },
+      tiktok: {
+        handle: "@adeolagoldbeautystudio",
+        url: "https://www.tiktok.com/@adeolagoldbeautystudio",
+      },
+      facebook: {
+        handle: "AdeolagoldBeautiesStudio",
+        url: "https://www.facebook.com/AdeolagoldBeautiesStudio",
+      },
+      youtube: {
+        handle: "@Adeolagoldstyle",
+        url: "https://www.youtube.com/@Adeolagoldstyle",
+      },
+    },
+    location: {
+      /**
+       * The studio's address is public: it is shown in full on the site, in the
+       * footer and in the PostalAddress structured data, so local search and
+       * map results can find it.
+       */
       street: "598 Holly Lane",
       locality: "Goodmayes",
-      region: "Ilford, Essex",
+      region: "Essex",
       postalCode: "IG3 9BF",
       country: "GB",
-      /** Single-line form for meta descriptions, alt text and share cards. */
+      areaServed: "Essex, London & UK-wide delivery",
+      /** Single-line form for meta descriptions, share cards and captions. */
       oneLine: "598 Holly Lane, Goodmayes, IG3 9BF",
+      /** What the public pages render as the studio address. */
+      displayLines: ["598 Holly Lane", "Goodmayes", "Essex IG3 9BF"],
+      note: "Appointments are booked in advance so the studio is yours for the session.",
       mapsUrl:
         "https://www.google.com/maps/search/?api=1&query=598+Holly+Lane+Goodmayes+IG3+9BF",
     },
     hours: [
-      { days: "Tuesday — Friday", time: "09:00 — 19:00" },
-      { days: "Saturday", time: "08:30 — 18:00" },
-      { days: "Sunday — Monday", time: "By appointment" },
+      { days: "Monday — Wednesday", time: "10:00 — 19:00" },
+      { days: "Thursday — Friday", time: "10:00 — 20:00" },
+      { days: "Saturday", time: "09:00 — 19:00" },
+      { days: "Sunday", time: "Closed" },
+    ],
+    /** Machine-readable opening hours for LocalBusiness structured data. */
+    openingHours: [
+      { days: ["Monday", "Tuesday", "Wednesday"], opens: "10:00", closes: "19:00" },
+      { days: ["Thursday", "Friday"], opens: "10:00", closes: "20:00" },
+      { days: ["Saturday"], opens: "09:00", closes: "19:00" },
     ],
   },
 
@@ -205,15 +240,6 @@ export const design = {
     badges: ["NEW", "BESTSELLER", "LIMITED"],
   },
 
-  services: [
-    { title: "Wig Installation", slug: "wig-installation" },
-    { title: "Wig Revamping", slug: "wig-revamping" },
-    { title: "Braiding", slug: "braiding" },
-    { title: "Sew-In", slug: "sew-in" },
-    { title: "Custom Wig Styling", slug: "custom-wig-styling" },
-    { title: "Hair Consultation", slug: "hair-consultation" },
-  ],
-
   collections: [
     { title: "Wigs", slug: "wigs" },
     { title: "Human Hair", slug: "human-hair" },
@@ -231,8 +257,8 @@ export const design = {
   seo: {
     title: "Adeolagold Beauty Studio | Luxury Wigs, Human Hair & Beauty Services",
     description:
-      "Discover premium human hair, luxury wigs and professional beauty services at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF. Shop premium hair or book your next appointment.",
-    url: "https://adeolagoldbeautystudio.co.uk",
+      "Luxury wig installation, wig revamps, braiding, silk press, microblading and professional makeup at Adeolagold Beauty Studio, 598 Holly Lane, Goodmayes IG3 9BF. Premium raw and virgin human hair, delivered UK-wide.",
+    url: "https://www.adeolagoldbeautystudio.co.uk",
   },
 } as const;
 

@@ -61,7 +61,7 @@ export default async function OpenGraphImage() {
             color: design.colors.goldLight,
           }}
         >
-          <div>{design.brand.address.oneLine}</div>
+          <div>{design.brand.location.oneLine}</div>
           <div>Book an appointment</div>
         </div>
       </div>

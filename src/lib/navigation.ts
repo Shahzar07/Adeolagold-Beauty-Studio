@@ -22,16 +22,16 @@ export const primaryNav: NavItem[] = [
           { label: "All Hair", href: "/shop" },
           { label: "New Arrivals", href: "/collections/new-arrivals" },
           { label: "Best Sellers", href: "/collections/best-sellers" },
-          { label: "Hair Care", href: "/collections/products" },
+          { label: "Frontals & Closures", href: "/collections/frontals-closures" },
         ],
       },
       {
         heading: "By Texture",
         links: [
-          { label: "Straight", href: "/shop?texture=Bone+Straight" },
+          { label: "Silky Straight", href: "/shop?texture=Silky+Straight" },
           { label: "Body Wave", href: "/shop?texture=Body+Wave" },
-          { label: "Deep Wave", href: "/shop?texture=Deep+Wave" },
-          { label: "Curly", href: "/shop?texture=Curly" },
+          { label: "Wigs", href: "/collections/wigs" },
+          { label: "Bundles", href: "/collections/human-hair" },
         ],
       },
     ],
@@ -52,22 +52,24 @@ export const primaryNav: NavItem[] = [
         links: [
           { label: "All Human Hair", href: "/collections/human-hair" },
           { label: "Bundles", href: "/shop?category=human-hair" },
-          { label: "Closures", href: "/products/hd-lace-closure-5x5" },
-          { label: "Frontals", href: "/products/hd-lace-frontal-13x4" },
+          {
+            label: "Frontals & Closures",
+            href: "/collections/frontals-closures",
+          },
         ],
       },
       {
-        heading: "Bundle Deals",
+        heading: "Shop by texture",
         links: [
-          { label: "Loose Wave Set", href: "/products/loose-wave-bundle-deal" },
-          { label: "Raw Straight", href: "/products/raw-vietnamese-straight-bundles" },
-          { label: "Raw Body Wave", href: "/products/raw-body-wave-bundles" },
-          { label: "Raw Curly", href: "/products/raw-curly-bundles" },
+          { label: "Straight Bundles", href: "/products/straight-human-hair-bundles" },
+          { label: "Body Wave Bundles", href: "/products/body-wave-human-hair-bundles" },
+          { label: "HD Lace Frontal 13×4", href: "/products/hd-lace-frontal-13x4" },
+          { label: "4×4 Lace Closure", href: "/products/4x4-lace-closure" },
         ],
       },
     ],
     feature: {
-      title: "Single donor, always",
+      title: "Raw and virgin, always",
       copy: "Cuticle intact and aligned. The reason our hair still behaves at wear fifty.",
       href: "/collections/human-hair",
       cta: "Shop human hair",
@@ -82,18 +84,27 @@ export const primaryNav: NavItem[] = [
         heading: "By Construction",
         links: [
           { label: "All Wigs", href: "/collections/wigs" },
-          { label: "Closure Wigs", href: "/shop?texture=Body+Wave" },
-          { label: "Frontal Wigs", href: "/products/signature-hd-frontal-wig" },
-          { label: "Short Styles", href: "/products/champagne-pixie-wig" },
+          { label: "Lace Front Wigs", href: "/shop?category=wigs" },
+          { label: "Glueless Wigs", href: "/products/natural-black-sleek-bob-wig" },
+          { label: "Bob Styles", href: "/products/sleek-black-bob-lace-front-wig" },
         ],
       },
       {
         heading: "Popular",
         links: [
-          { label: "Bone Straight Bob", href: "/products/bone-straight-bob-wig" },
-          { label: "Signature HD Frontal", href: "/products/signature-hd-frontal-wig" },
-          { label: "Deep Wave Frontal", href: "/products/deep-wave-frontal-wig" },
-          { label: "Ombré Honey Blonde", href: "/products/ombre-honey-blonde-wig" },
+          {
+            label: "Sleek Black Bob Lace Front",
+            href: "/products/sleek-black-bob-lace-front-wig",
+          },
+          {
+            label: "Natural Black Sleek Bob",
+            href: "/products/natural-black-sleek-bob-wig",
+          },
+          {
+            label: "13×6 Straight — Extra Length",
+            href: "/products/13x6-straight-lace-front-extra-length",
+          },
+          { label: "New Arrivals", href: "/collections/new-arrivals" },
         ],
       },
     ],
@@ -110,19 +121,26 @@ export const primaryNav: NavItem[] = [
     href: "/services",
     columns: [
       {
-        heading: "In the studio",
+        heading: "Hair",
         links: [
-          { label: "Wig Installation", href: "/services/wig-installation" },
-          { label: "Wig Revamping", href: "/services/wig-revamping" },
+          { label: "Luxury Wig Installation", href: "/services/wig-installation" },
+          { label: "Wig Revamp & Restoration", href: "/services/wig-revamping" },
+          {
+            label: "Frontal & Closure Installation",
+            href: "/services/frontal-and-closure-installation",
+          },
+          { label: "Sew-In Weaves", href: "/services/sew-in-weaves" },
           { label: "Braiding", href: "/services/braiding" },
-          { label: "Sew-In", href: "/services/sew-in" },
+          { label: "Silk Press", href: "/services/silk-press" },
         ],
       },
       {
-        heading: "Bespoke",
+        heading: "Bespoke & beauty",
         links: [
-          { label: "Custom Wig Styling", href: "/services/custom-wig-styling" },
-          { label: "Hair Consultation", href: "/services/hair-consultation" },
+          { label: "Custom Wig Making", href: "/services/custom-wig-making" },
+          { label: "Hair Treatments", href: "/services/hair-treatments" },
+          { label: "Microblading", href: "/services/microblading" },
+          { label: "Professional Makeup", href: "/services/professional-makeup" },
           { label: "All Services", href: "/services" },
           { label: "Booking Policy", href: "/help/booking-policy" },
         ],
@@ -130,7 +148,7 @@ export const primaryNav: NavItem[] = [
     ],
     feature: {
       title: "Your next look starts here",
-      copy: "One client at a time. Choose a service, pick a time, confirm with a deposit.",
+      copy: "One client at a time in a private Essex studio. Choose a service, pick a time, and we confirm within 24 hours.",
       href: "/book",
       cta: "Book an appointment",
       seed: "nav-book",
@@ -146,6 +164,7 @@ export const footerColumns = [
     links: [
       { label: "Wigs", href: "/collections/wigs" },
       { label: "Human Hair", href: "/collections/human-hair" },
+      { label: "Frontals & Closures", href: "/collections/frontals-closures" },
       { label: "New Arrivals", href: "/collections/new-arrivals" },
       { label: "Best Sellers", href: "/collections/best-sellers" },
     ],
@@ -154,9 +173,10 @@ export const footerColumns = [
     heading: "Services",
     links: [
       { label: "Wig Installation", href: "/services/wig-installation" },
-      { label: "Revamping", href: "/services/wig-revamping" },
+      { label: "Wig Revamp", href: "/services/wig-revamping" },
       { label: "Braiding", href: "/services/braiding" },
-      { label: "Sew-Ins", href: "/services/sew-in" },
+      { label: "Silk Press", href: "/services/silk-press" },
+      { label: "Microblading", href: "/services/microblading" },
     ],
   },
   {

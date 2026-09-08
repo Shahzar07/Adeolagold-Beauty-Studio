@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { useClientToday } from "@/lib/hooks";
-import { cx, formatPrice } from "@/lib/format";
+import { cx, formatPrice, formatServicePrice } from "@/lib/format";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { ArrowLeftIcon, CheckIcon, ClockIcon } from "@/components/ui/Icons";
 import { useToast } from "@/context/ToastProvider";
@@ -102,7 +102,7 @@ export function BookingForm({ initialService }: { initialService?: string }) {
     await new Promise((resolve) => setTimeout(resolve, 900));
     setReference(`AG-${Math.random().toString(36).slice(2, 7).toUpperCase()}`);
     setSubmitting(false);
-    push({ title: "Appointment confirmed", description: "Check your inbox for the details.", tone: "success" });
+    push({ title: "Request sent", description: "The studio will confirm within 24 hours.", tone: "success" });
     goTo(4);
   };
 
@@ -116,13 +116,14 @@ export function BookingForm({ initialService }: { initialService?: string }) {
           <CheckIcon className="h-7 w-7" />
         </span>
         <h2 className="display-2 animate-fade-up mt-9" style={{ animationDelay: "120ms" }}>
-          You&rsquo;re booked.
+          Request received.
         </h2>
         <p
           className="animate-fade-up mt-5 text-[16px] leading-relaxed text-ink-soft"
           style={{ animationDelay: "200ms" }}
         >
-          We can&rsquo;t wait to welcome you to Adeolagold.
+          Thank you for booking with Adeolagold Beauty Studio. We&rsquo;ll be in touch within
+          24 hours to confirm your appointment. We can&rsquo;t wait to see you.
         </p>
 
         <dl
@@ -136,8 +137,8 @@ export function BookingForm({ initialService }: { initialService?: string }) {
             { label: "Time", value: time },
             { label: "Name", value: details.name },
             {
-              label: "Deposit paid",
-              value: service ? formatPrice(service.depositPence) : "",
+              label: "Status",
+              value: "Awaiting studio confirmation",
             },
           ].map((row) => (
             <div key={row.label} className="flex items-baseline justify-between gap-6 py-3.5">
@@ -151,8 +152,9 @@ export function BookingForm({ initialService }: { initialService?: string }) {
           className="animate-fade-up mt-7 text-[13px] leading-relaxed text-muted"
           style={{ animationDelay: "340ms" }}
         >
-          A confirmation is on its way to {details.email}. You&rsquo;ll get a reminder 48 hours
-          before, with a link to reschedule if you need it.
+          We&rsquo;ve sent a copy to {details.email}. Your confirmation will include the quote,
+          the deposit to secure the slot and the studio address. You&rsquo;ll get a reminder 48
+          hours before, with a link to reschedule if you need it.
         </p>
 
         <div
@@ -247,7 +249,7 @@ export function BookingForm({ initialService }: { initialService?: string }) {
                   </div>
                   <div className="shrink-0 text-right">
                     <p className="text-[13px] tabular-nums text-ink">
-                      From {formatPrice(option.fromPrice)}
+                      {formatServicePrice(option.fromPrice)}
                     </p>
                     <p className="mt-1 flex items-center justify-end gap-1.5 text-[11px] text-muted">
                       <ClockIcon className="h-3.5 w-3.5" />
@@ -468,24 +470,34 @@ export function BookingForm({ initialService }: { initialService?: string }) {
                 <div className="mt-6 border-t border-line pt-5">
                   <dl className="flex flex-col gap-2.5 text-[13.5px]">
                     <Row
-                      label="Service from"
-                      value={service ? formatPrice(service.fromPrice) : ""}
+                      label="Price"
+                      value={service ? formatServicePrice(service.fromPrice) : ""}
                     />
                     <div className="flex items-baseline justify-between gap-4">
-                      <dt className="text-ink">Deposit due today</dt>
-                      <dd className="font-display text-[20px] leading-none tabular-nums">
-                        {service ? formatPrice(service.depositPence) : ""}
+                      <dt className="text-ink">Deposit</dt>
+                      <dd
+                        className={cx(
+                          "text-right",
+                          service?.depositPence
+                            ? "font-display text-[20px] leading-none tabular-nums"
+                            : "text-ink",
+                        )}
+                      >
+                        {service?.depositPence
+                          ? formatPrice(service.depositPence)
+                          : "Confirmed on booking"}
                       </dd>
                     </div>
                   </dl>
                   <p className="mt-4 text-[12px] leading-relaxed text-muted">
-                    The deposit secures your slot and is deducted from your balance on the day.
-                    The remainder is settled in the studio.
+                    We confirm your appointment within 24 hours with a quote and the deposit
+                    to secure it. The deposit is deducted from your balance and the remainder
+                    is settled in the studio.
                   </p>
                 </div>
 
                 <Button type="submit" disabled={submitting} fullWidth className="mt-6">
-                  {submitting ? "Confirming…" : "Confirm & pay deposit"}
+                  {submitting ? "Sending…" : "Request appointment"}
                 </Button>
               </div>
             </aside>

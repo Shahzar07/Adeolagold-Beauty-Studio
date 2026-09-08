@@ -1,18 +1,21 @@
 import Image from "next/image";
 import type { ImageTone } from "@/lib/types";
 import { cx } from "@/lib/format";
+import { imageFor } from "@/lib/images";
 
 /* ------------------------------------------------------------------
    EditorialImage
    ------------------------------------------------------------------
    Every image slot on the site goes through this component.
 
-   • Pass `src` and it renders an optimised next/image — this is what you
-     use once real campaign photography is available.
-   • Omit `src` and it renders a deterministic piece of generative artwork
-     built from the brand palette, so the layout, tone and rhythm of the
-     site are fully realised before the photography lands. Swapping in a
-     photograph is a one-line change per slot (see README).
+   • Every slot is addressed by a `seed`. If `src/lib/images.ts` has a
+     photograph registered for that seed, it renders as an optimised
+     next/image — this is the normal path.
+   • An explicit `src` prop overrides the registry for one-off images.
+   • With neither, it falls back to a deterministic piece of generative
+     artwork built from the brand palette, so a slot that has no photograph
+     yet still renders in the right tone and rhythm rather than breaking the
+     layout. Adding a photograph is one registry entry (see README).
    ------------------------------------------------------------------ */
 
 interface EditorialImageProps {
@@ -169,10 +172,12 @@ export function EditorialImage({
   sizes = "100vw",
   priority = false,
 }: EditorialImageProps) {
-  if (src) {
+  const photo = src ?? imageFor(seed);
+
+  if (photo) {
     return (
       <Image
-        src={src}
+        src={photo}
         alt={alt}
         fill
         sizes={sizes}
